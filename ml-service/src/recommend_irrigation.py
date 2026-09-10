@@ -61,6 +61,26 @@ def _row(payload: dict) -> pd.DataFrame:
     return pd.DataFrame([row])[IRR_FEATURE_ORDER]
 
 
+def _moisture_override(payload: dict, need: str) -> tuple[str, str | None]:
+    """The training data has only ~3% 'High' rows, so the classifier almost never
+    predicts High and barely moves with soil moisture. Correct the label at the
+    ends of the moisture range (dataset range is ~8-65%), and nudge a 'Low' up
+    when it is hot and dry. Returns (need, reason-or-None).
+    """
+    m = payload.get("soilMoisture")
+    t = payload.get("temperature")
+    if m is not None:
+        if m < 15 and need != "High":
+            return "High", f"soil moisture is critically low ({m:.0f}%)"
+        if m >= 48 and need != "Low":
+            return "Low", f"soil is already wet ({m:.0f}%)"
+        if 15 <= m < 22 and need == "Low":
+            return "Medium", f"soil moisture is on the low side ({m:.0f}%)"
+    if need == "Low" and t is not None and t >= 38 and (m is None or m < 28):
+        return "Medium", f"very hot ({t:.0f}°C) with limited soil moisture"
+    return need, None
+
+
 def _reasons(payload: dict, need: str) -> list[str]:
     out = []
     m = payload.get("soilMoisture")
@@ -104,6 +124,12 @@ def recommend_irrigation(payload: dict) -> dict:
         need = "High" if m < 20 else "Medium" if m < 38 else "Low"
         need_confidence = 50
         model_source = "rule_fallback"
+
+    override_reason = None
+    need, override_reason = _moisture_override(payload, need)
+    if override_reason:
+        need_confidence = max(need_confidence, 66)
+        model_source = f"{model_source}+moisture_rule"
 
     base_mm = STAGE_WATER_MM.get(crop, DEFAULT_STAGE_WATER).get(stage, DEFAULT_STAGE_WATER["vegetative"])
     net_mm = base_mm * NEED_SCALE[need]
@@ -153,7 +179,9 @@ def recommend_irrigation(payload: dict) -> dict:
             if duration_hours else "depends on your delivery rate"
         ),
         "rainfallAdjustment": rainfall_adjustment,
-        "reason": "Because " + "; ".join(_reasons(payload, need)) + ".",
+        "reason": "Because " + "; ".join(
+            ([override_reason] if override_reason else []) + _reasons(payload, need)
+        ) + ".",
         "assumptions": [
             f"reference depth for {crop}/{stage}: {base_mm:g} mm",
             f"method efficiency ({method}): {eff:.0%}",

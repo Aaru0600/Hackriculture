@@ -32,6 +32,31 @@ def _bell(value: float, centre: float, spread: float) -> float:
     return math.exp(-0.5 * z * z)
 
 
+def _bounded_bell(value: float, centre: float, spread: float, floor: float) -> float:
+    """A bell mapped into [floor, 1.0] so one imperfect input can only shave a
+    bounded amount off the estimate (the overall adjustment clamp still applies).
+    """
+    return floor + (1.0 - floor) * _bell(value, centre, spread)
+
+
+def soil_nutrient_factor(applied: float | None, recommended: float) -> float | None:
+    """Gentle response for a single soil N/P/K reading (kg/ha) against the crop's
+    recommended dose. These inputs are coarse estimates (a farmer's memory, or a
+    SoilGrids proxy), so being well under the dose is a mild drag - not a
+    collapse - and being at/above it is about neutral with a small ceiling.
+    Returns None when the value was not supplied.
+    """
+    if applied is None:
+        return None
+    x = max(0.0, float(applied)) / max(recommended, 1e-6)
+    f = 0.88 + 0.12 * min(1.0, x / 0.6)            # 0.88 near 0 -> ~1.0 by 60% of dose
+    if x >= 1.0:
+        f = min(1.06, f + 0.04 * min(1.0, x - 1.0))
+    if x > 1.8:                                    # diminishing returns / lodging
+        f *= max(0.85, 1.0 - 0.04 * (x - 1.8))
+    return f
+
+
 def nutrient_factor(applied: float, recommended: float, *, cereal: bool) -> float:
     x = applied / max(recommended, 1e-6)
     f = _saturating(x, half=1.0, floor=0.4)
@@ -198,7 +223,6 @@ def agronomic_adjustment(
     Returns {factor, parts: [{input, label, multiplier, direction}], applied}.
     """
     profile = CROP_PROFILE[crop]
-    cereal = crop in ("rice", "wheat", "maize")
     parts: list[dict] = []
 
     def add(name: str, label: str, mult: float) -> None:
@@ -211,24 +235,25 @@ def agronomic_adjustment(
                           else "about neutral"),
         })
 
-    if None not in (nitrogen, phosphorus, potassium):
-        f = min(
-            nutrient_factor(nitrogen, profile["rec_n"], cereal=cereal),
-            nutrient_factor(phosphorus, profile["rec_p"], cereal=cereal),
-            nutrient_factor(potassium, profile["rec_k"], cereal=cereal),
-        )
-        ref = min(
-            nutrient_factor(profile["rec_n"], profile["rec_n"], cereal=cereal),
-            nutrient_factor(profile["rec_p"], profile["rec_p"], cereal=cereal),
-            nutrient_factor(profile["rec_k"], profile["rec_k"], cereal=cereal),
-        )
-        add("npk", "Soil N-P-K vs recommended dose", f / ref)
+    # Nutrients: law of the minimum over WHATEVER the farmer supplied - a lone
+    # nitrogen reading now counts (previously all three were required).
+    npk_parts = [
+        soil_nutrient_factor(nitrogen, profile["rec_n"]),
+        soil_nutrient_factor(phosphorus, profile["rec_p"]),
+        soil_nutrient_factor(potassium, profile["rec_k"]),
+    ]
+    npk_parts = [p for p in npk_parts if p is not None]
+    if npk_parts:
+        add("npk", "Soil N-P-K vs recommended dose", min(npk_parts))
 
     if ph is not None:
-        add("ph", "Soil pH", ph_factor(ph, profile["opt_ph"]))  # ref = 1.0
+        # spread widened (0.9 -> 1.4) and floored: a unit off pH is a real drag,
+        # not a near-zero factor slamming the estimate to the clamp.
+        add("ph", "Soil pH", _bounded_bell(ph, profile["opt_ph"], spread=1.4, floor=0.80))
     if temperature is not None:
+        # spread widened (6 -> 8) and floored so a hot/cold spell adjusts, not erases.
         add("temperature", "Season temperature",
-            temperature_factor(temperature, profile["opt_temp"]))  # ref = 1.0
+            _bounded_bell(temperature, profile["opt_temp"], spread=8.0, floor=0.78))
     if humidity is not None:
         add("humidity", "Relative humidity",
             humidity_factor(humidity) / humidity_factor(65.0))
