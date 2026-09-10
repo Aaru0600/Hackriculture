@@ -1,0 +1,203 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   HACKRICULTURE design system
+   Nature-inspired: agriculture green + earth/soil secondary.
+   Consumed via Tailwind v4 tokens (bg-brand-500, text-earth-700, ...)
+   ============================================================ */
+@theme {
+  /* -- Typography -- */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+
+  /* -- Brand: agriculture green -- */
+  --color-brand-50: #f0fdf4;
+  --color-brand-100: #dcfce7;
+  --color-brand-200: #bbf7d0;
+  --color-brand-300: #86efac;
+  --color-brand-400: #4ade80;
+  --color-brand-500: #22c55e;
+  --color-brand-600: #16a34a;
+  --color-brand-700: #15803d;
+  --color-brand-800: #166534;
+  --color-brand-900: #14532d;
+  --color-brand-950: #052e16;
+
+  /* -- Secondary: earth / soil brown -- */
+  --color-earth-50: #faf6f0;
+  --color-earth-100: #f0e6d8;
+  --color-earth-200: #e0cbb0;
+  --color-earth-300: #cdaa82;
+  --color-earth-400: #bb8a5c;
+  --color-earth-500: #a9713f;
+  --color-earth-600: #8f5a33;
+  --color-earth-700: #74472c;
+  --color-earth-800: #5f3b28;
+  --color-earth-900: #4f3324;
+  --color-earth-950: #2b1a12;
+
+  /* -- Accent: harvest gold (highlights, AI badge) -- */
+  --color-harvest-50: #fffbeb;
+  --color-harvest-100: #fef3c7;
+  --color-harvest-200: #fde68a;
+  --color-harvest-300: #fcd34d;
+  --color-harvest-400: #fbbf24;
+  --color-harvest-500: #f59e0b;
+  --color-harvest-600: #d97706;
+  --color-harvest-700: #b45309;
+
+  /* -- Semantic status -- */
+  --color-success: #16a34a;
+  --color-success-soft: #dcfce7;
+  --color-warning: #f59e0b;
+  --color-warning-soft: #fef3c7;
+  --color-danger: #dc2626;
+  --color-danger-soft: #fee2e2;
+  --color-info: #0ea5e9;
+  --color-info-soft: #e0f2fe;
+
+  /* -- Neutral surfaces -- */
+  --color-canvas: #f7f9f7;
+  --color-surface: #ffffff;
+  --color-ink: #14231a;
+  --color-muted: #5b6b60;
+  --color-line: #e6ece7;
+
+  /* -- Radius -- */
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.75rem;
+
+  /* -- Shadows: soft, nature-lit -- */
+  --shadow-card: 0 1px 2px rgba(20, 35, 26, 0.04), 0 8px 24px -12px rgba(20, 35, 26, 0.12);
+  --shadow-lift: 0 4px 12px rgba(20, 35, 26, 0.06), 0 24px 48px -24px rgba(20, 35, 26, 0.22);
+  --shadow-glow: 0 0 0 1px rgba(22, 163, 74, 0.14), 0 12px 40px -12px rgba(22, 163, 74, 0.35);
+}
+
+/* ---------- Base ----------
+   Kept inside @layer base so Tailwind utilities (e.g. text-white on a
+   heading) always win over these element defaults. */
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100svh;
+    font-family: var(--font-sans);
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-600);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ---------- Reusable component classes ---------- */
+@layer components {
+  .container-app {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 1024px) {
+    .container-app {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Card surface */
+  .card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Subtle field/soil gradient used behind hero + section bands */
+  .bg-field {
+    background-image:
+      radial-gradient(60rem 30rem at 85% -10%, rgba(34, 197, 94, 0.12), transparent 60%),
+      radial-gradient(45rem 24rem at 0% 0%, rgba(250, 204, 21, 0.1), transparent 55%);
+  }
+
+  .bg-soil {
+    background-image: linear-gradient(180deg, #ffffff 0%, var(--color-canvas) 100%);
+  }
+
+  /* Faint dotted grid, evokes crop rows / sensor grid */
+  .bg-rows {
+    background-image: radial-gradient(rgba(20, 83, 45, 0.07) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #c7d3ca;
+  border-radius: 999px;
+  border: 2px solid var(--color-canvas);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a9bab0;
+}
+
+/* Print / "Save as PDF": show only the marked .printable region, drop app chrome. */
+@media print {
+  body {
+    background: #fff;
+  }
+  header,
+  nav,
+  aside,
+  .no-print {
+    display: none !important;
+  }
+  .printable {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .printable .rounded-2xl,
+  .printable .rounded-xl {
+    box-shadow: none !important;
+    border-color: #ddd !important;
+  }
+}

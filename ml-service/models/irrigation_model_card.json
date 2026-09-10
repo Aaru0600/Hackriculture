@@ -1,0 +1,132 @@
+{
+  "task": "irrigation_need",
+  "model_type": "RandomForestClassifier (class_weight=balanced), one-hot categoricals",
+  "features": {
+    "numeric": [
+      "soil_ph",
+      "soil_moisture",
+      "organic_carbon",
+      "electrical_conductivity",
+      "temperature_c",
+      "humidity",
+      "rainfall_mm",
+      "sunlight_hours",
+      "wind_speed_kmh",
+      "field_area_hectare",
+      "previous_irrigation_mm"
+    ],
+    "categorical": [
+      "soil_type",
+      "crop_type",
+      "crop_growth_stage",
+      "season",
+      "irrigation_type",
+      "water_source",
+      "mulching_used",
+      "region"
+    ]
+  },
+  "classes": [
+    "High",
+    "Low",
+    "Medium"
+  ],
+  "dataset": {
+    "path": "data\\irrigation_dataset.csv",
+    "rows": 10000,
+    "sha256": "9aa80c2a3a412f1a519ffe31201cef31146172174cdc91c460b969e3a55d22cf",
+    "synthetic": false,
+    "source": "irrigation_prediction.csv (soil/weather/crop context -> Low/Medium/High irrigation need)"
+  },
+  "metrics": {
+    "macro_f1_holdout": 0.9691,
+    "per_class": {
+      "Low": {
+        "precision": 0.9974,
+        "recall": 0.9983,
+        "f1-score": 0.9979
+      },
+      "Medium": {
+        "precision": 0.9844,
+        "recall": 0.9961,
+        "f1-score": 0.9902
+      },
+      "High": {
+        "precision": 1.0,
+        "recall": 0.8507,
+        "f1-score": 0.9194
+      }
+    },
+    "confusion_matrix_low_med_high": [
+      [
+        1171,
+        2,
+        0
+      ],
+      [
+        3,
+        757,
+        0
+      ],
+      [
+        0,
+        10,
+        57
+      ]
+    ]
+  },
+  "cv_macro_f1": {
+    "mean": 0.9678,
+    "std": 0.0135
+  },
+  "feature_importance": {
+    "crop_growth_stage": 0.2568,
+    "soil_moisture": 0.2307,
+    "mulching_used": 0.1352,
+    "wind_speed_kmh": 0.1339,
+    "temperature_c": 0.1275,
+    "rainfall_mm": 0.1155,
+    "soil_ph": 0.0003,
+    "season": 0.0001,
+    "soil_type": 0.0,
+    "crop_type": 0.0,
+    "irrigation_type": 0.0,
+    "water_source": 0.0,
+    "region": 0.0,
+    "organic_carbon": 0.0,
+    "electrical_conductivity": 0.0,
+    "humidity": 0.0,
+    "sunlight_hours": 0.0,
+    "field_area_hectare": 0.0,
+    "previous_irrigation_mm": 0.0
+  },
+  "feature_defaults": {
+    "soil_ph": 6.47,
+    "soil_moisture": 37.24,
+    "organic_carbon": 0.95,
+    "electrical_conductivity": 1.78,
+    "temperature_c": 27.09,
+    "humidity": 60.04,
+    "rainfall_mm": 1250.335,
+    "sunlight_hours": 7.56,
+    "wind_speed_kmh": 10.19,
+    "field_area_hectare": 7.54,
+    "previous_irrigation_mm": 59.63,
+    "soil_type": "sandy",
+    "crop_type": "rice",
+    "crop_growth_stage": "harvest",
+    "season": "rabi",
+    "irrigation_type": "sprinkler",
+    "water_source": "river",
+    "mulching_used": "no",
+    "region": "south"
+  },
+  "versions": {
+    "python": "3.13.9",
+    "scikit_learn": "1.9.0",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5"
+  },
+  "created_at": "2026-09-10T13:02:15.246623+00:00",
+  "disclaimer": "Predicts a Low/Medium/High irrigation-need class from soil and weather context; the water depth and schedule are a rule-of-thumb layer on top. Adjust to your own field observations and local extension advice - do not irrigate purely on this number."
+}

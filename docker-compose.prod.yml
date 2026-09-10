@@ -1,0 +1,50 @@
+# Production overrides. Use together with the base file:
+#
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+#
+# Required env (put them in a .env file next to this, or export them):
+#   JWT_SECRET        long random string
+#   CORS_ORIGIN       https://your-frontend-domain
+#   MONGO_URI         a managed connection string (e.g. MongoDB Atlas)
+#   PUBLIC_API_URL    https://your-frontend-domain/api  (baked into the frontend build)
+#   ASSISTANT_API_KEY optional, for a real LLM behind KrishiAI
+#
+# Notes:
+#  - The `mongo` service is kept for convenience but you should point MONGO_URI at
+#    a managed database with auth + backups for real data. To drop the bundled
+#    Mongo entirely, add `docker compose ... --scale mongo=0` or remove it here.
+#  - TLS is expected to terminate at a load balancer / reverse proxy in front of
+#    the `frontend` container (port 80). Add certs there, not in this file.
+
+services:
+  mongo:
+    ports: []                       # no host exposure
+    restart: always
+
+  ml-service:
+    ports: []                       # internal only - reached at http://ml-service:8001
+    restart: always
+
+  backend:
+    restart: always
+    environment:
+      NODE_ENV: production
+      MONGO_URI: ${MONGO_URI:?set MONGO_URI}
+      CORS_ORIGIN: ${CORS_ORIGIN:?set CORS_ORIGIN}
+      JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET}
+      SEED_DEMO_ADMIN: "false"       # no known-credentials account in prod
+      DOCS_ENABLED: "false"          # do not publish the API surface
+      ASSISTANT_API_KEY: ${ASSISTANT_API_KEY:-}
+    ports:
+      - "4000:4000"                 # keep or drop if only the frontend proxies to it
+
+  frontend:
+    restart: always
+    build:
+      context: .
+      args:
+        VITE_API_BASE_URL: ${PUBLIC_API_URL:-/api}
+        VITE_USE_MOCKS: "false"
+        VITE_DIRECT_DATA_APIS: "false"
+    ports:
+      - "80:80"

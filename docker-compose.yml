@@ -1,0 +1,68 @@
+# HACKRICULTURE - local dev / demo stack: Mongo + Python ML + Node API + React.
+#
+#   docker compose up --build
+#
+# Frontend:  http://localhost:8080
+# API:       http://localhost:4000/api   (Swagger UI at /api/docs)
+# ML:        http://localhost:8001       (dev only - not exposed by the prod override)
+#
+# The ml-service trains any missing models from ml-service/data/raw/*.csv on
+# first start (see ml-service/docker-entrypoint.sh). The raw CSVs are committed,
+# so a clean `docker compose up --build` works out of the box (first ML start
+# takes ~1 min while it trains).
+#
+# For production use the override:  docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+
+services:
+  mongo:
+    image: mongo:8
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+
+  ml-service:
+    build: ./ml-service
+    restart: unless-stopped
+    volumes:
+      - ./ml-service/data:/app/data
+      - ml-models:/app/models
+    ports:
+      - "8001:8001"
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    depends_on:
+      - mongo
+      - ml-service
+    environment:
+      NODE_ENV: production
+      PORT: "4000"
+      MONGO_URI: mongodb://mongo:27017/hackriculture
+      ML_SERVICE_URL: http://ml-service:8001
+      CORS_ORIGIN: http://localhost:8080
+      JWT_SECRET: ${JWT_SECRET:-dev-only-compose-secret-change-me}
+      SEED_DEMO_ADMIN: "true"
+      DOCS_ENABLED: "true"
+      ASSISTANT_API_KEY: ${ASSISTANT_API_KEY:-}
+    ports:
+      - "4000:4000"
+
+  frontend:
+    build:
+      context: .
+      args:
+        VITE_API_BASE_URL: /api
+        VITE_USE_MOCKS: "false"
+        VITE_DIRECT_DATA_APIS: "false"
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+
+volumes:
+  mongo-data:
+  ml-models:
