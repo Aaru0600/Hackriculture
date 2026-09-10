@@ -8,7 +8,7 @@ import { Recommendation } from '../models/Recommendation.js'
 import { Alert } from '../models/Alert.js'
 import { Dataset } from '../models/Dataset.js'
 import { ModelRecord } from '../models/ModelRecord.js'
-import { getModelInfo } from '../services/mlService.js'
+import { getAllModelCards } from '../services/mlService.js'
 
 const paginate = (page, limit, total) => ({ page, limit, total, pages: Math.ceil(total / limit) })
 
@@ -94,36 +94,54 @@ export const listRecommendations = asyncHandler(async (req, res) => {
   return ok(res, { items: items.map((d) => d.toJSON()), ...paginate(page, limit, total) })
 })
 
-/** GET /api/admin/models - live /model-info merged with admin ModelRecord notes. */
+const NAMES = {
+  yield: 'Crop Yield Prediction',
+  crop: 'Crop Recommendation',
+  irrigation: 'Smart Irrigation',
+}
+
+/** Pull a small flat metrics object out of a model card's nested `metrics`. */
+function headlineMetrics(key, card) {
+  const m = card?.metrics
+  if (!m) return null
+  if (key === 'yield' && m.gbm_holdout) {
+    return { r2: m.gbm_holdout.r2, mae_t_ha: m.gbm_holdout.mae, mape_pct: m.gbm_holdout.mape_pct }
+  }
+  if (key === 'crop') {
+    return { accuracy: m.accuracy, macro_f1: m.macro_f1, top3_accuracy: m.top3_accuracy }
+  }
+  if (key === 'irrigation') {
+    return { macro_f1_holdout: m.macro_f1_holdout }
+  }
+  // fallback: keep only number-valued keys
+  return Object.fromEntries(Object.entries(m).filter(([, v]) => typeof v === 'number'))
+}
+
+/** GET /api/admin/models - live model cards (/model-info?task=) + admin ModelRecord notes. */
 export const listModels = asyncHandler(async (_req, res) => {
   const records = await ModelRecord.find()
   const recByKey = Object.fromEntries(records.map((r) => [r.key, r.toJSON()]))
 
-  let info = null
-  try {
-    info = await getModelInfo()
-  } catch {
-    info = null
-  }
-  const models = (info?.models ?? info ?? {})
+  const { cards, reachable } = await getAllModelCards()
 
-  const keys = ['yield', 'crop', 'irrigation']
-  const items = keys.map((key) => {
-    const m = models[key] ?? models[`${key}_model`] ?? {}
+  const items = ['yield', 'crop', 'irrigation'].map((key) => {
+    const card = cards[key]
     return {
       key,
-      name: m.name ?? m.model_name ?? `${key} model`,
-      version: m.version ?? m.model_version ?? null,
-      algorithm: m.algorithm ?? m.model_source ?? null,
-      metrics: m.metrics ?? m.holdout ?? null,
-      trainedAt: m.trained_at ?? m.last_updated ?? null,
-      liveInfoAvailable: info != null && Object.keys(m).length > 0,
+      name: NAMES[key],
+      algorithm: card?.model_type ?? null,
+      version: card?.dataset?.sha256 ? card.dataset.sha256.slice(0, 8) : null,
+      datasetRows: card?.dataset?.rows ?? null,
+      synthetic: card?.dataset?.synthetic ?? null,
+      metrics: headlineMetrics(key, card),
+      trainedAt: card?.created_at ?? null,
+      liveInfoAvailable: card != null,
       status: recByKey[key]?.status ?? 'production',
       notes: recByKey[key]?.notes ?? '',
       recordUpdatedAt: recByKey[key]?.updatedAt ?? null,
     }
   })
-  return ok(res, { items, mlServiceReachable: info != null })
+  return ok(res, { items, mlServiceReachable: reachable })
 })
 
 /** PATCH /api/admin/models/:key   body: { status?, notes? } */

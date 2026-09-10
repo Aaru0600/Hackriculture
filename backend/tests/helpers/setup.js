@@ -28,22 +28,28 @@ export const mlStub = {
       model_version: 'crop-1.0-test', model_source: 'random_forest_classifier',
       disclaimer: 'confirm with a local officer',
     }),
-    '/model-info': () => ({
-      models: {
-        yield: {
-          name: 'Crop Yield (HGB regressor)', version: '2.0-real', algorithm: 'HistGradientBoostingRegressor',
-          metrics: { r2: 0.96, mae_t_ha: 1.2, mape: 0.18 }, trained_at: '2026-09-10',
-        },
-        crop: {
-          name: 'Crop Recommendation (RF)', version: 'crop-1.0', algorithm: 'RandomForestClassifier',
-          metrics: { accuracy: 0.99, macro_f1: 0.99 }, trained_at: '2026-09-10',
-        },
-        irrigation: {
-          name: 'Irrigation Need (RF)', version: 'irrigation-1.0', algorithm: 'RandomForestClassifier',
-          metrics: { macro_f1: 0.97 }, trained_at: '2026-09-10',
-        },
-      },
-    }),
+    // Flat model card per ?task= (mirrors the real ml-service /model-info shape).
+    '/model-info': (_body, query = {}) => {
+      const task = query.task || 'yield'
+      const base = {
+        created_at: '2026-09-10T00:00:00Z',
+        versions: { python: '3.13.9', scikit_learn: '1.9.0' },
+      }
+      if (task === 'crop') {
+        return { ...base, task: 'crop_recommendation', model_type: 'RandomForestClassifier (7 agronomic inputs)',
+          dataset: { rows: 2200, sha256: '734f06ae488803b1c7996c2be22651', synthetic: false },
+          metrics: { accuracy: 0.9932, macro_f1: 0.9932, top3_accuracy: 1.0 } }
+      }
+      if (task === 'irrigation') {
+        return { ...base, task: 'irrigation_need', model_type: 'RandomForestClassifier (class_weight=balanced)',
+          dataset: { rows: 10000, sha256: '9aa80c2a3a412f1a519ffe31201cef', synthetic: false },
+          metrics: { macro_f1_holdout: 0.9691 } }
+      }
+      return { ...base, model_type: 'HistGradientBoostingRegressor (squared error), sklearn Pipeline',
+        target: 'yield_t_ha',
+        dataset: { rows: 5153, sha256: 'c279803a0120b317e5bbc68f8995c5', synthetic: false },
+        metrics: { gbm_holdout: { mae: 1.2028, r2: 0.9569, mape_pct: 17.71 } } }
+    },
     '/recommend/irrigation': (_body) => ({
       irrigationNeed: 'Medium', needConfidence: 71, priority: 'Medium',
       waterRequirement: { netDepthMm: 45, grossDepthMm: 60, litresPerHectare: 600000, totalVolumeM3: 180, text: '~60 mm (sprinkler)' },
@@ -85,13 +91,15 @@ async function startMlStub() {
     req.on('data', (c) => (raw += c))
     req.on('end', () => {
       res.setHeader('Content-Type', 'application/json')
-      if (req.url === '/health') {
+      const path = req.url.split('?')[0]
+      if (path === '/health') {
         res.end(JSON.stringify({ status: 'ok', models: { yield: true } }))
         return
       }
       const body = raw ? JSON.parse(raw) : {}
-      const route = mlStub.routes[req.url]
-      const payload = route ? route(body) : mlStub.handler(body)
+      const query = Object.fromEntries(new URLSearchParams(req.url.split('?')[1] || ''))
+      const route = mlStub.routes[path]
+      const payload = route ? route(body, query) : mlStub.handler(body)
       res.statusCode = mlStub.status
       res.end(JSON.stringify(payload))
     })

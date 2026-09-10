@@ -56,21 +56,29 @@ export async function recommendIrrigation(payload) {
   }
 }
 
-let _modelInfo = null
-let _modelInfoAt = 0
+const _cardCache = new Map() // task -> { at, data }
 const MODEL_INFO_TTL = 60_000
 
-/** GET /model-info  — cached for a minute. */
-export async function getModelInfo() {
-  if (_modelInfo && Date.now() - _modelInfoAt < MODEL_INFO_TTL) return _modelInfo
-  try {
-    const { data } = await axios.get(url('/model-info'), cfg())
-    _modelInfo = data
-    _modelInfoAt = Date.now()
-    return data
-  } catch (err) {
-    throw wrapError(err, 'model-info')
-  }
+/** GET /model-info?task=yield|crop|irrigation  — the flat model card, cached 1 min. */
+export async function getModelCard(task = 'yield') {
+  const hit = _cardCache.get(task)
+  if (hit && Date.now() - hit.at < MODEL_INFO_TTL) return hit.data
+  const { data } = await axios.get(url(`/model-info?task=${encodeURIComponent(task)}`), cfg())
+  _cardCache.set(task, { at: Date.now(), data })
+  return data
+}
+
+/** Best-effort model cards for all three tasks; missing ones come back null. */
+export async function getAllModelCards() {
+  const tasks = ['yield', 'crop', 'irrigation']
+  const results = await Promise.allSettled(tasks.map((t) => getModelCard(t)))
+  const out = {}
+  let reachable = false
+  results.forEach((r, i) => {
+    if (r.status === 'fulfilled') { out[tasks[i]] = r.value; reachable = true }
+    else out[tasks[i]] = null
+  })
+  return { cards: out, reachable }
 }
 
 /** GET /health — used by the backend's own /api/health. */
