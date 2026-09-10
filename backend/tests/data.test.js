@@ -28,6 +28,15 @@ test('GET /api/weather/bundle validates lat/lon', async () => {
   assert.equal((await request.get('/api/weather/bundle?lat=999&lon=0')).status, 400)
 })
 
+test('GET /api/weather/annual-rainfall returns a number (labelled sample when the archive is down)', async () => {
+  const res = await request.get('/api/weather/annual-rainfall?lat=30.9&lon=75.85')
+  assert.equal(res.status, 200)
+  assert.equal(typeof res.body.data.annualRainfallMm, 'number')
+  assert.ok(res.body.data.annualRainfallMm > 0)
+  assert.equal(res.body.data.isMock, true)          // archive URL points at a dead port in tests
+  assert.equal((await request.get('/api/weather/annual-rainfall?lat=200&lon=0')).status, 400)
+})
+
 test('GET /api/geo/search needs a query of >= 2 chars and returns an array', async () => {
   assert.equal((await request.get('/api/geo/search?q=a')).status, 400)
   const res = await request.get('/api/geo/search?q=ludhiana')

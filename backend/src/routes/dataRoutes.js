@@ -8,6 +8,7 @@ import * as data from '../controllers/dataController.js'
 const router = Router()
 
 router.get('/weather/bundle', validate(latLonQuerySchema, 'query'), data.getWeatherBundle)
+router.get('/weather/annual-rainfall', validate(latLonQuerySchema, 'query'), data.getAnnualRainfall)
 router.get('/geo/search', validate(geoSearchQuerySchema, 'query'), data.searchPlaces)
 router.get('/geo/reverse', validate(latLonQuerySchema, 'query'), data.reverseGeocode)
 router.get('/soil/estimate', validate(latLonQuerySchema, 'query'), data.getSoilEstimate)

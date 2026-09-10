@@ -618,30 +618,32 @@
     }
   },
   "assistant": {
-    "title": "KrishiAI Assistant",
-    "intro": "Ask about crops, soil, fertiliser, irrigation or weather. Type or use the mic.",
-    "thinking": "Thinking...",
-    "placeholder": "Ask a farming question...",
-    "speak": "Speak your question",
-    "error": "Sorry, I could not answer that. Please try again.",
-    "disclaimer": "General guidance only - confirm anything that affects money or crop health with your local agricultural officer.",
+    "title": "கிருஷிAI உதவியாளர்",
+    "intro": "பயிர்கள், மண், உரம், நீர்ப்பாசனம் அல்லது வானிலை பற்றி கேளுங்கள். தட்டச்சு செய்யவும் அல்லது மைக்கைப் பயன்படுத்தவும்.",
+    "thinking": "யோசிக்கிறேன்...",
+    "placeholder": "விவசாயம் தொடர்பான கேள்வியைக் கேளுங்கள்...",
+    "speak": "உங்கள் கேள்வியைப் பேசுங்கள்",
+    "error": "மன்னிக்கவும், என்னால் பதிலளிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
+    "disclaimer": "பொதுவான வழிகாட்டுதல் மட்டுமே — பணம் அல்லது பயிர் ஆரோக்கியம் தொடர்பான எதையும் உள்ளூர் வேளாண் அதிகாரியிடம் உறுதிப்படுத்தவும்.",
     "suggestions": [
-      "Which crop suits my soil?",
-      "How much urea for wheat?",
-      "Is it safe to irrigate before rain?"
-    ]
+      "என் மண்ணுக்கு எந்தப் பயிர் ஏற்றது?",
+      "கோதுமைக்கு எவ்வளவு யூரியா?",
+      "மழைக்கு முன் நீர்ப்பாசனம் செய்வது சரியா?"
+    ],
+    "refresh": "புதிய உரையாடல்"
   },
   "voiceNav": {
     "label": "Voice navigation - tap and say a page name"
   },
   "autofill": {
-    "title": "Auto-fill from my location",
-    "subtitle": "Pulls soil and current weather so you do not have to type them.",
-    "done": "Filled soil and weather values - adjust any of them if you have a soil test.",
-    "failed": "Could not fetch data for that location. Enter values manually.",
-    "soilMock": "Soil service was unavailable - using a labelled sample estimate.",
-    "filled": "{{count}} values auto-filled",
-    "disclaimer": "Auto-filled values are model estimates, not a soil-lab test. Every field stays editable."
+    "title": "என் இருப்பிடத்திலிருந்து தானாக நிரப்பு",
+    "subtitle": "மண் மற்றும் தற்போதைய வானிலையை தானாகப் பெறுகிறது, நீங்கள் தட்டச்சு செய்ய வேண்டாம்.",
+    "done": "மண் மற்றும் வானிலை மதிப்புகள் நிரப்பப்பட்டன — மண் பரிசோதனை இருந்தால் மாற்றவும்.",
+    "failed": "அந்த இருப்பிடத்திற்கான தரவைப் பெற முடியவில்லை. மதிப்புகளை நீங்களே உள்ளிடவும்.",
+    "soilMock": "மண் சேவை கிடைக்கவில்லை — மாதிரி மதிப்பீடு காட்டப்படுகிறது.",
+    "filled": "{{count}} மதிப்புகள் தானாக நிரப்பப்பட்டன",
+    "disclaimer": "தானாக நிரப்பப்பட்ட மதிப்புகள் மாதிரி மதிப்பீடுகள், ஆய்வக மண் பரிசோதனை அல்ல. ஒவ்வொரு புலத்தையும் திருத்தலாம்.",
+    "rainfallMock": "மழை வரலாறு கிடைக்கவில்லை — தோராயமான பிராந்திய எண்ணிக்கை காட்டப்படுகிறது."
   },
   "history": {
     "badge": "Your records",

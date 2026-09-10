@@ -618,30 +618,32 @@
     }
   },
   "assistant": {
-    "title": "KrishiAI Assistant",
-    "intro": "Ask about crops, soil, fertiliser, irrigation or weather. Type or use the mic.",
-    "thinking": "Thinking...",
-    "placeholder": "Ask a farming question...",
-    "speak": "Speak your question",
-    "error": "Sorry, I could not answer that. Please try again.",
-    "disclaimer": "General guidance only - confirm anything that affects money or crop health with your local agricultural officer.",
+    "title": "ਕ੍ਰਿਸ਼ੀAI ਸਹਾਇਕ",
+    "intro": "ਫ਼ਸਲਾਂ, ਮਿੱਟੀ, ਖਾਦ, ਸਿੰਚਾਈ ਜਾਂ ਮੌਸਮ ਬਾਰੇ ਪੁੱਛੋ। ਟਾਈਪ ਕਰੋ ਜਾਂ ਮਾਈਕ ਵਰਤੋ।",
+    "thinking": "ਸੋਚ ਰਿਹਾ ਹਾਂ...",
+    "placeholder": "ਖੇਤੀ ਨਾਲ ਜੁੜਿਆ ਸਵਾਲ ਪੁੱਛੋ...",
+    "speak": "ਆਪਣਾ ਸਵਾਲ ਬੋਲੋ",
+    "error": "ਮਾਫ਼ ਕਰਨਾ, ਮੈਂ ਇਸ ਦਾ ਜਵਾਬ ਨਹੀਂ ਦੇ ਸਕਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਫਿਰ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
+    "disclaimer": "ਸਿਰਫ਼ ਆਮ ਮਾਰਗਦਰਸ਼ਨ — ਪੈਸੇ ਜਾਂ ਫ਼ਸਲ ਦੀ ਸਿਹਤ ਨਾਲ ਜੁੜੀ ਗੱਲ ਆਪਣੇ ਸਥਾਨਕ ਖੇਤੀਬਾੜੀ ਅਫ਼ਸਰ ਤੋਂ ਪੱਕੀ ਕਰੋ।",
     "suggestions": [
-      "Which crop suits my soil?",
-      "How much urea for wheat?",
-      "Is it safe to irrigate before rain?"
-    ]
+      "ਮੇਰੀ ਮਿੱਟੀ ਲਈ ਕਿਹੜੀ ਫ਼ਸਲ ਠੀਕ ਹੈ?",
+      "ਕਣਕ ਲਈ ਕਿੰਨੀ ਯੂਰੀਆ?",
+      "ਮੀਂਹ ਤੋਂ ਪਹਿਲਾਂ ਸਿੰਚਾਈ ਕਰਨੀ ਠੀਕ ਹੈ?"
+    ],
+    "refresh": "ਨਵੀਂ ਗੱਲਬਾਤ"
   },
   "voiceNav": {
     "label": "Voice navigation - tap and say a page name"
   },
   "autofill": {
-    "title": "Auto-fill from my location",
-    "subtitle": "Pulls soil and current weather so you do not have to type them.",
-    "done": "Filled soil and weather values - adjust any of them if you have a soil test.",
-    "failed": "Could not fetch data for that location. Enter values manually.",
-    "soilMock": "Soil service was unavailable - using a labelled sample estimate.",
-    "filled": "{{count}} values auto-filled",
-    "disclaimer": "Auto-filled values are model estimates, not a soil-lab test. Every field stays editable."
+    "title": "ਮੇਰੇ ਟਿਕਾਣੇ ਤੋਂ ਆਪਣੇ-ਆਪ ਭਰੋ",
+    "subtitle": "ਮਿੱਟੀ ਅਤੇ ਮੌਜੂਦਾ ਮੌਸਮ ਆਪਣੇ-ਆਪ ਲੈ ਲੈਂਦਾ ਹੈ ਤਾਂ ਜੋ ਤੁਹਾਨੂੰ ਟਾਈਪ ਨਾ ਕਰਨਾ ਪਵੇ।",
+    "done": "ਮਿੱਟੀ ਅਤੇ ਮੌਸਮ ਦੇ ਮੁੱਲ ਭਰ ਦਿੱਤੇ — ਮਿੱਟੀ ਜਾਂਚ ਹੋਵੇ ਤਾਂ ਬਦਲ ਸਕਦੇ ਹੋ।",
+    "failed": "ਉਸ ਟਿਕਾਣੇ ਲਈ ਡਾਟਾ ਨਹੀਂ ਮਿਲਿਆ। ਮੁੱਲ ਖੁਦ ਭਰੋ।",
+    "soilMock": "ਮਿੱਟੀ ਸੇਵਾ ਉਪਲਬਧ ਨਹੀਂ ਸੀ — ਇੱਕ ਨਮੂਨਾ ਅੰਦਾਜ਼ਾ ਵਿਖਾਇਆ ਜਾ ਰਿਹਾ ਹੈ।",
+    "filled": "{{count}} ਮੁੱਲ ਆਪਣੇ-ਆਪ ਭਰੇ ਗਏ",
+    "disclaimer": "ਆਪਣੇ-ਆਪ ਭਰੇ ਮੁੱਲ ਮਾਡਲ ਅੰਦਾਜ਼ੇ ਹਨ, ਪ੍ਰਯੋਗਸ਼ਾਲਾ ਮਿੱਟੀ ਜਾਂਚ ਨਹੀਂ। ਹਰ ਖਾਨਾ ਸੋਧਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+    "rainfallMock": "ਮੀਂਹ ਦਾ ਇਤਿਹਾਸ ਉਪਲਬਧ ਨਹੀਂ ਸੀ — ਮੋਟਾ ਖੇਤਰੀ ਅੰਕੜਾ ਵਿਖਾਇਆ ਜਾ ਰਿਹਾ ਹੈ।"
   },
   "history": {
     "badge": "Your records",

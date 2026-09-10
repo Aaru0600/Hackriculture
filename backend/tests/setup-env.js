@@ -8,6 +8,7 @@ process.env.ML_SERVICE_URL ??= 'http://127.0.0.1:9'
 // Point the data-provider proxy at a dead port so tests exercise the labelled
 // fallbacks instead of hitting the real Open-Meteo / SoilGrids endpoints.
 process.env.OPEN_METEO_URL ??= 'http://127.0.0.1:9/forecast'
+process.env.OPEN_METEO_ARCHIVE_URL ??= 'http://127.0.0.1:9/archive'
 process.env.GEOCODING_URL ??= 'http://127.0.0.1:9/search'
 process.env.SOILGRIDS_URL ??= 'http://127.0.0.1:9/soil'
 process.env.REVERSE_GEOCODE_URL ??= 'http://127.0.0.1:9/reverse'

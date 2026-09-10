@@ -618,30 +618,32 @@
     }
   },
   "assistant": {
-    "title": "KrishiAI Assistant",
-    "intro": "Ask about crops, soil, fertiliser, irrigation or weather. Type or use the mic.",
-    "thinking": "Thinking...",
-    "placeholder": "Ask a farming question...",
-    "speak": "Speak your question",
-    "error": "Sorry, I could not answer that. Please try again.",
-    "disclaimer": "General guidance only - confirm anything that affects money or crop health with your local agricultural officer.",
+    "title": "కృషిAI సహాయకుడు",
+    "intro": "పంటలు, నేల, ఎరువులు, నీటిపారుదల లేదా వాతావరణం గురించి అడగండి. టైప్ చేయండి లేదా మైక్ ఉపయోగించండి.",
+    "thinking": "ఆలోచిస్తున్నాను...",
+    "placeholder": "వ్యవసాయ ప్రశ్న అడగండి...",
+    "speak": "మీ ప్రశ్న మాట్లాడండి",
+    "error": "క్షమించండి, నేను దీనికి సమాధానం ఇవ్వలేకపోయాను. దయచేసి మళ్ళీ ప్రయత్నించండి.",
+    "disclaimer": "సాధారణ మార్గదర్శకత్వం మాత్రమే — డబ్బు లేదా పంట ఆరోగ్యానికి సంబంధించిన విషయాన్ని మీ స్థానిక వ్యవసాయ అధికారితో నిర్ధారించుకోండి.",
     "suggestions": [
-      "Which crop suits my soil?",
-      "How much urea for wheat?",
-      "Is it safe to irrigate before rain?"
-    ]
+      "నా నేలకు ఏ పంట సరిపోతుంది?",
+      "గోధుమలకు ఎంత యూరియా?",
+      "వర్షానికి ముందు నీరు పెట్టడం సరైనదేనా?"
+    ],
+    "refresh": "కొత్త సంభాషణ"
   },
   "voiceNav": {
     "label": "Voice navigation - tap and say a page name"
   },
   "autofill": {
-    "title": "Auto-fill from my location",
-    "subtitle": "Pulls soil and current weather so you do not have to type them.",
-    "done": "Filled soil and weather values - adjust any of them if you have a soil test.",
-    "failed": "Could not fetch data for that location. Enter values manually.",
-    "soilMock": "Soil service was unavailable - using a labelled sample estimate.",
-    "filled": "{{count}} values auto-filled",
-    "disclaimer": "Auto-filled values are model estimates, not a soil-lab test. Every field stays editable."
+    "title": "నా స్థానం నుండి స్వయంచాలకంగా నింపండి",
+    "subtitle": "మీరు టైప్ చేయవలసిన అవసరం లేకుండా నేల మరియు ప్రస్తుత వాతావరణాన్ని స్వయంచాలకంగా తీసుకుంటుంది.",
+    "done": "నేల మరియు వాతావరణ విలువలు నింపబడ్డాయి — నేల పరీక్ష ఉంటే మార్చండి.",
+    "failed": "ఆ స్థానానికి డేటా పొందలేకపోయాము. విలువలను మీరే నమోదు చేయండి.",
+    "soilMock": "నేల సేవ అందుబాటులో లేదు — నమూనా అంచనా చూపుతోంది.",
+    "filled": "{{count}} విలువలు స్వయంచాలకంగా నింపబడ్డాయి",
+    "disclaimer": "స్వయంచాలకంగా నింపిన విలువలు మోడల్ అంచనాలు, ప్రయోగశాల నేల పరీక్ష కాదు. ప్రతి ఫీల్డ్‌ను సవరించవచ్చు.",
+    "rainfallMock": "వర్షపాత చరిత్ర అందుబాటులో లేదు — స్థూల ప్రాంతీయ సంఖ్య చూపుతోంది."
   },
   "history": {
     "badge": "Your records",

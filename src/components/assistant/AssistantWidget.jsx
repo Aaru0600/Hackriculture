@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { MessageCircle, X, Send, Sparkles, Mic, Loader2 } from 'lucide-react'
+import { MessageCircle, X, Send, Sparkles, Mic, Loader2, RotateCcw } from 'lucide-react'
 import { chat } from '@/services/assistantService'
 import { cn } from '@/lib/cn'
 
@@ -52,6 +52,13 @@ export function AssistantWidget() {
     else { try { rec.start(); setListening(true) } catch { /* noop */ } }
   }
 
+  const refresh = () => {
+    setMessages([])
+    setDraft('')
+    setBusy(false)
+    try { localStorage.removeItem(STORAGE_KEY) } catch { /* noop */ }
+  }
+
   const send = async (text) => {
     const content = (text ?? draft).trim()
     if (!content || busy) return
@@ -90,6 +97,16 @@ export function AssistantWidget() {
           <div className="flex items-center gap-2 border-b border-line bg-gradient-to-r from-brand-600 to-harvest-500 px-4 py-3 text-white">
             <Sparkles size={16} />
             <span className="text-sm font-semibold">{t('assistant.title')}</span>
+            <button
+              type="button"
+              onClick={refresh}
+              disabled={messages.length === 0 && !busy}
+              aria-label={t('assistant.refresh')}
+              title={t('assistant.refresh')}
+              className="ml-auto grid h-7 w-7 place-items-center rounded-full text-white/90 transition-colors hover:bg-white/15 disabled:opacity-40"
+            >
+              <RotateCcw size={14} />
+            </button>
           </div>
 
           <div ref={listRef} className="flex-1 space-y-3 overflow-y-auto px-3 py-3">

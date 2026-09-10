@@ -618,30 +618,32 @@
     }
   },
   "assistant": {
-    "title": "KrishiAI Assistant",
-    "intro": "Ask about crops, soil, fertiliser, irrigation or weather. Type or use the mic.",
-    "thinking": "Thinking...",
-    "placeholder": "Ask a farming question...",
-    "speak": "Speak your question",
-    "error": "Sorry, I could not answer that. Please try again.",
-    "disclaimer": "General guidance only - confirm anything that affects money or crop health with your local agricultural officer.",
+    "title": "कृषीAI सहाय्यक",
+    "intro": "पिके, माती, खत, सिंचन किंवा हवामानाबद्दल विचारा. टाइप करा किंवा माइक वापरा.",
+    "thinking": "विचार करत आहे...",
+    "placeholder": "शेतीविषयक प्रश्न विचारा...",
+    "speak": "तुमचा प्रश्न बोला",
+    "error": "क्षमस्व, मी याचे उत्तर देऊ शकलो नाही. कृपया पुन्हा प्रयत्न करा.",
+    "disclaimer": "फक्त सामान्य मार्गदर्शन — पैसे किंवा पिकाच्या आरोग्याशी संबंधित बाब स्थानिक कृषी अधिकाऱ्याकडून तपासा.",
     "suggestions": [
-      "Which crop suits my soil?",
-      "How much urea for wheat?",
-      "Is it safe to irrigate before rain?"
-    ]
+      "माझ्या मातीसाठी कोणते पीक योग्य आहे?",
+      "गव्हासाठी किती युरिया?",
+      "पावसापूर्वी सिंचन करणे योग्य आहे का?"
+    ],
+    "refresh": "नवीन संभाषण"
   },
   "voiceNav": {
     "label": "Voice navigation - tap and say a page name"
   },
   "autofill": {
-    "title": "Auto-fill from my location",
-    "subtitle": "Pulls soil and current weather so you do not have to type them.",
-    "done": "Filled soil and weather values - adjust any of them if you have a soil test.",
-    "failed": "Could not fetch data for that location. Enter values manually.",
-    "soilMock": "Soil service was unavailable - using a labelled sample estimate.",
-    "filled": "{{count}} values auto-filled",
-    "disclaimer": "Auto-filled values are model estimates, not a soil-lab test. Every field stays editable."
+    "title": "माझ्या स्थानावरून आपोआप भरा",
+    "subtitle": "माती आणि सध्याचे हवामान आपोआप घेते जेणेकरून तुम्हाला टाइप करावे लागणार नाही.",
+    "done": "माती व हवामानाची मूल्ये भरली — माती चाचणी असल्यास बदला.",
+    "failed": "त्या स्थानासाठी डेटा मिळाला नाही. मूल्ये स्वतः भरा.",
+    "soilMock": "माती सेवा उपलब्ध नव्हती — नमुना अंदाज दाखवत आहोत.",
+    "filled": "{{count}} मूल्ये आपोआप भरली",
+    "disclaimer": "आपोआप भरलेली मूल्ये मॉडेल अंदाज आहेत, प्रयोगशाळा माती चाचणी नाही. प्रत्येक रकाना संपादित करता येतो.",
+    "rainfallMock": "पावसाचा इतिहास उपलब्ध नव्हता — ढोबळ प्रादेशिक आकडा दाखवत आहोत."
   },
   "history": {
     "badge": "Your records",

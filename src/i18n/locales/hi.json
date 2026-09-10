@@ -618,30 +618,32 @@
     }
   },
   "assistant": {
-    "title": "KrishiAI Assistant",
-    "intro": "Ask about crops, soil, fertiliser, irrigation or weather. Type or use the mic.",
-    "thinking": "Thinking...",
-    "placeholder": "Ask a farming question...",
-    "speak": "Speak your question",
-    "error": "Sorry, I could not answer that. Please try again.",
-    "disclaimer": "General guidance only - confirm anything that affects money or crop health with your local agricultural officer.",
+    "title": "कृषिAI सहायक",
+    "intro": "फसल, मिट्टी, खाद, सिंचाई या मौसम के बारे में पूछें। टाइप करें या माइक का उपयोग करें।",
+    "thinking": "सोच रहा हूँ...",
+    "placeholder": "खेती से जुड़ा सवाल पूछें...",
+    "speak": "अपना सवाल बोलें",
+    "error": "क्षमा करें, मैं इसका उत्तर नहीं दे सका। कृपया फिर से प्रयास करें।",
+    "disclaimer": "यह केवल सामान्य मार्गदर्शन है — पैसे या फसल की सेहत से जुड़ी बात अपने स्थानीय कृषि अधिकारी से पुष्टि करें।",
     "suggestions": [
-      "Which crop suits my soil?",
-      "How much urea for wheat?",
-      "Is it safe to irrigate before rain?"
-    ]
+      "मेरी मिट्टी के लिए कौन-सी फसल ठीक है?",
+      "गेहूँ के लिए कितनी यूरिया?",
+      "बारिश से पहले सिंचाई करना ठीक है?"
+    ],
+    "refresh": "नई बातचीत"
   },
   "voiceNav": {
     "label": "Voice navigation - tap and say a page name"
   },
   "autofill": {
-    "title": "Auto-fill from my location",
-    "subtitle": "Pulls soil and current weather so you do not have to type them.",
-    "done": "Filled soil and weather values - adjust any of them if you have a soil test.",
-    "failed": "Could not fetch data for that location. Enter values manually.",
-    "soilMock": "Soil service was unavailable - using a labelled sample estimate.",
-    "filled": "{{count}} values auto-filled",
-    "disclaimer": "Auto-filled values are model estimates, not a soil-lab test. Every field stays editable."
+    "title": "मेरे स्थान से अपने-आप भरें",
+    "subtitle": "मिट्टी और मौजूदा मौसम की जानकारी अपने-आप ले लेता है ताकि आपको टाइप न करना पड़े।",
+    "done": "मिट्टी और मौसम के मान भर दिए गए — मिट्टी जाँच हो तो इन्हें बदल सकते हैं।",
+    "failed": "उस स्थान के लिए डेटा नहीं मिल सका। मान स्वयं दर्ज करें।",
+    "soilMock": "मिट्टी सेवा उपलब्ध नहीं थी — एक नमूना अनुमान दिखाया जा रहा है।",
+    "filled": "{{count}} मान अपने-आप भरे गए",
+    "disclaimer": "अपने-आप भरे मान मॉडल अनुमान हैं, प्रयोगशाला मिट्टी जाँच नहीं। हर खाना संपादित किया जा सकता है।",
+    "rainfallMock": "वर्षा का इतिहास उपलब्ध नहीं था — मोटा-मोटा क्षेत्रीय आँकड़ा दिखाया जा रहा है।"
   },
   "history": {
     "badge": "Your records",

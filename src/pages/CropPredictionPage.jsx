@@ -54,7 +54,7 @@ export default function CropPredictionPage() {
     setValues((v) => {
       const nv = { ...v }
       const touched = []
-      for (const k of ['soilPH', 'soilType', 'nitrogen', 'temperature', 'humidity']) {
+      for (const k of ['soilPH', 'soilType', 'nitrogen', 'temperature', 'humidity', 'rainfall']) {
         if (patch[k] != null) { nv[k] = String(patch[k]); touched.push(k) }
       }
       if (!nv.district && meta?.district) nv.district = meta.district
@@ -232,7 +232,11 @@ export default function CropPredictionPage() {
 
         {step === 2 && (
           <>
-            <p className="text-xs text-muted">{t('predict.envHint')}</p>
+            <LocationAutofill onFill={applyAutofill} />
+            <p className="text-xs text-muted">
+              {t('predict.envHint')}
+              {autofilled.length > 0 && ` · ${t('autofill.filled', { count: autofilled.length })}`}
+            </p>
             <div className="grid grid-cols-2 gap-3">
               <FormInput label={t('predict.fields.temperature')} type="number" value={values.temperature} onChange={set('temperature')} error={errors.temperature} hint="°C" />
               <FormInput label={t('predict.fields.humidity')} type="number" value={values.humidity} onChange={set('humidity')} error={errors.humidity} hint="%" />

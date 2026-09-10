@@ -629,7 +629,8 @@
       "Which crop suits my soil?",
       "How much urea for wheat?",
       "Is it safe to irrigate before rain?"
-    ]
+    ],
+    "refresh": "New conversation"
   },
   "voiceNav": {
     "label": "Voice navigation - tap and say a page name"
@@ -641,7 +642,8 @@
     "failed": "Could not fetch data for that location. Enter values manually.",
     "soilMock": "Soil service was unavailable - using a labelled sample estimate.",
     "filled": "{{count}} values auto-filled",
-    "disclaimer": "Auto-filled values are model estimates, not a soil-lab test. Every field stays editable."
+    "disclaimer": "Auto-filled values are model estimates, not a soil-lab test. Every field stays editable.",
+    "rainfallMock": "Rainfall history was unavailable - using a rough regional figure."
   },
   "history": {
     "badge": "Your records",

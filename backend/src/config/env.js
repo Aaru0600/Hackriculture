@@ -38,6 +38,7 @@ export const env = {
 
   // Keyless public data providers (weather / geocode / soil) - overridable.
   OPEN_METEO_URL: process.env.OPEN_METEO_URL ?? 'https://api.open-meteo.com/v1/forecast',
+  OPEN_METEO_ARCHIVE_URL: process.env.OPEN_METEO_ARCHIVE_URL ?? 'https://archive-api.open-meteo.com/v1/archive',
   GEOCODING_URL: process.env.GEOCODING_URL ?? 'https://geocoding-api.open-meteo.com/v1/search',
   SOILGRIDS_URL: process.env.SOILGRIDS_URL ?? 'https://rest.isric.org/soilgrids/v2.0/properties/query',
   REVERSE_GEOCODE_URL: process.env.REVERSE_GEOCODE_URL ?? 'https://api.bigdatacloud.net/data/reverse-geocode-client',

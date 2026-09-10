@@ -5,7 +5,7 @@ import { LocationPicker } from '@/components/LocationPicker'
 import { useGeolocation } from '@/hooks/useGeolocation'
 import { reverseGeocode } from '@/services/geoService'
 import { getSoilEstimate } from '@/services/soilService'
-import { getWeatherBundle } from '@/services/weatherService'
+import { getWeatherBundle, getAnnualRainfall } from '@/services/weatherService'
 import { cn } from '@/lib/cn'
 
 const SOIL_KEY_MAP = {
@@ -32,9 +32,10 @@ export function LocationAutofill({ onFill }) {
     setStatus('loading')
     setNote('')
     try {
-      const [soil, weather, place] = await Promise.allSettled([
+      const [soil, weather, rain, place] = await Promise.allSettled([
         getSoilEstimate(loc),
         getWeatherBundle(loc),
+        getAnnualRainfall(loc),
         reverseGeocode(loc.latitude, loc.longitude),
       ])
 
@@ -56,8 +57,12 @@ export function LocationAutofill({ onFill }) {
         const w = weather.value
         if (w.current?.temperature != null) patch.temperature = w.current.temperature
         if (w.current?.humidity != null) patch.humidity = w.current.humidity
-        const rain7 = (w.daily || []).reduce((sum, d) => sum + (d.precipitationSum || 0), 0)
-        if (rain7 > 0) patch.recentRainfall = Math.round(rain7)
+      }
+
+      // annual rainfall (Open-Meteo archive, trailing 365 days) for the yield form
+      if (rain.status === 'fulfilled' && rain.value?.annualRainfallMm > 0) {
+        patch.rainfall = rain.value.annualRainfallMm
+        if (rain.value.isMock) setNote((n) => n || t('autofill.rainfallMock'))
       }
 
       const rev = place.status === 'fulfilled' ? place.value : null

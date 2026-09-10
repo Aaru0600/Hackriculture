@@ -8,6 +8,12 @@ export const getWeatherBundle = asyncHandler(async (req, res) => {
   return ok(res, await providers.weatherBundle(lat, lon), 'Weather bundle')
 })
 
+/** GET /api/weather/annual-rainfall?lat&lon */
+export const getAnnualRainfall = asyncHandler(async (req, res) => {
+  const { lat, lon } = req.query
+  return ok(res, await providers.annualRainfall(lat, lon), 'Annual rainfall')
+})
+
 /** GET /api/geo/search?q&lang */
 export const searchPlaces = asyncHandler(async (req, res) => {
   const { q, lang } = req.query

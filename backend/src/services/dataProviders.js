@@ -12,6 +12,7 @@ import axios from 'axios'
 import { env } from '../config/env.js'
 
 const OPEN_METEO_URL = env.OPEN_METEO_URL ?? 'https://api.open-meteo.com/v1/forecast'
+const OPEN_METEO_ARCHIVE_URL = env.OPEN_METEO_ARCHIVE_URL ?? 'https://archive-api.open-meteo.com/v1/archive'
 const GEOCODING_URL = env.GEOCODING_URL ?? 'https://geocoding-api.open-meteo.com/v1/search'
 const SOILGRIDS_URL = env.SOILGRIDS_URL ?? 'https://rest.isric.org/soilgrids/v2.0/properties/query'
 const REVERSE_URL = env.REVERSE_GEOCODE_URL ?? 'https://api.bigdatacloud.net/data/reverse-geocode-client'
@@ -101,6 +102,32 @@ export async function weatherBundle(lat, lon) {
     return normalizeWeather(data)
   } catch {
     return sampleWeather()
+  }
+}
+
+/**
+ * Total precipitation over the trailing ~365 days (Open-Meteo archive API), a
+ * usable "annual rainfall" figure for the yield form. Returns
+ * { annualRainfallMm, from, to, isMock }; falls back to a regional-ish sample.
+ */
+export async function annualRainfall(lat, lon) {
+  const end = new Date(Date.now() - 6 * 864e5)          // archive lags ~5 days
+  const start = new Date(end.getTime() - 365 * 864e5)
+  const iso = (d) => d.toISOString().slice(0, 10)
+  try {
+    const { data } = await http.get(OPEN_METEO_ARCHIVE_URL, {
+      params: {
+        latitude: lat, longitude: lon,
+        start_date: iso(start), end_date: iso(end),
+        daily: 'precipitation_sum', timezone: 'auto',
+      },
+    })
+    const sums = data.daily?.precipitation_sum ?? []
+    const total = sums.reduce((a, v) => a + (v ?? 0), 0)
+    if (!sums.length) return { annualRainfallMm: 1000, from: iso(start), to: iso(end), isMock: true }
+    return { annualRainfallMm: Math.round(total), from: iso(start), to: iso(end), isMock: false }
+  } catch {
+    return { annualRainfallMm: 1000, from: iso(start), to: iso(end), isMock: true }
   }
 }
 

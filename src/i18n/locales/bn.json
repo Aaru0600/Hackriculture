@@ -618,30 +618,32 @@
     }
   },
   "assistant": {
-    "title": "KrishiAI Assistant",
-    "intro": "Ask about crops, soil, fertiliser, irrigation or weather. Type or use the mic.",
-    "thinking": "Thinking...",
-    "placeholder": "Ask a farming question...",
-    "speak": "Speak your question",
-    "error": "Sorry, I could not answer that. Please try again.",
-    "disclaimer": "General guidance only - confirm anything that affects money or crop health with your local agricultural officer.",
+    "title": "কৃষিAI সহকারী",
+    "intro": "ফসল, মাটি, সার, সেচ বা আবহাওয়া সম্পর্কে জিজ্ঞাসা করুন। টাইপ করুন বা মাইক ব্যবহার করুন।",
+    "thinking": "ভাবছি...",
+    "placeholder": "কৃষি সম্পর্কিত প্রশ্ন করুন...",
+    "speak": "আপনার প্রশ্ন বলুন",
+    "error": "দুঃখিত, আমি এর উত্তর দিতে পারিনি। অনুগ্রহ করে আবার চেষ্টা করুন।",
+    "disclaimer": "শুধুমাত্র সাধারণ নির্দেশনা — টাকা বা ফসলের স্বাস্থ্য সম্পর্কিত বিষয় আপনার স্থানীয় কৃষি কর্মকর্তার কাছে নিশ্চিত করুন।",
     "suggestions": [
-      "Which crop suits my soil?",
-      "How much urea for wheat?",
-      "Is it safe to irrigate before rain?"
-    ]
+      "আমার মাটির জন্য কোন ফসল উপযুক্ত?",
+      "গমের জন্য কত ইউরিয়া?",
+      "বৃষ্টির আগে সেচ দেওয়া কি ঠিক?"
+    ],
+    "refresh": "নতুন কথোপকথন"
   },
   "voiceNav": {
     "label": "Voice navigation - tap and say a page name"
   },
   "autofill": {
-    "title": "Auto-fill from my location",
-    "subtitle": "Pulls soil and current weather so you do not have to type them.",
-    "done": "Filled soil and weather values - adjust any of them if you have a soil test.",
-    "failed": "Could not fetch data for that location. Enter values manually.",
-    "soilMock": "Soil service was unavailable - using a labelled sample estimate.",
-    "filled": "{{count}} values auto-filled",
-    "disclaimer": "Auto-filled values are model estimates, not a soil-lab test. Every field stays editable."
+    "title": "আমার অবস্থান থেকে স্বয়ংক্রিয়ভাবে পূরণ করুন",
+    "subtitle": "মাটি ও বর্তমান আবহাওয়া স্বয়ংক্রিয়ভাবে নিয়ে আসে যাতে আপনাকে টাইপ করতে না হয়।",
+    "done": "মাটি ও আবহাওয়ার মান পূরণ হয়েছে — মাটি পরীক্ষা থাকলে পরিবর্তন করুন।",
+    "failed": "ওই অবস্থানের জন্য তথ্য পাওয়া যায়নি। মান নিজে দিন।",
+    "soilMock": "মাটি পরিষেবা পাওয়া যায়নি — একটি নমুনা অনুমান দেখানো হচ্ছে।",
+    "filled": "{{count}}টি মান স্বয়ংক্রিয়ভাবে পূরণ হয়েছে",
+    "disclaimer": "স্বয়ংক্রিয়ভাবে পূরণ করা মান মডেল অনুমান, গবেষণাগার মাটি পরীক্ষা নয়। প্রতিটি ঘর সম্পাদনাযোগ্য।",
+    "rainfallMock": "বৃষ্টির ইতিহাস পাওয়া যায়নি — একটি আনুমানিক আঞ্চলিক সংখ্যা দেখানো হচ্ছে।"
   },
   "history": {
     "badge": "Your records",

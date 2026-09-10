@@ -12,6 +12,8 @@ import { mockWeatherBundle } from '@/mock/weather'
 const DIRECT = (import.meta.env.VITE_DIRECT_DATA_APIS ?? 'true').toString() === 'true'
 const OPEN_METEO_URL =
   import.meta.env.VITE_OPEN_METEO_URL ?? 'https://api.open-meteo.com/v1/forecast'
+const OPEN_METEO_ARCHIVE_URL =
+  import.meta.env.VITE_OPEN_METEO_ARCHIVE_URL ?? 'https://archive-api.open-meteo.com/v1/archive'
 
 const CURRENT_FIELDS = [
   'temperature_2m',
@@ -95,5 +97,40 @@ export async function getWeatherBundle(location) {
     // Keep the app usable: return synthetic data flagged as mock.
     if (import.meta.env.DEV) console.warn('[weatherService] falling back to mock:', err)
     return mockWeatherBundle(location)
+  }
+}
+
+/**
+ * Total precipitation over the trailing ~365 days - a usable "annual rainfall"
+ * figure for the yield form. Returns { annualRainfallMm, isMock } or null if
+ * even the fallback is unavailable.
+ * @param {{ latitude:number, longitude:number }} location
+ */
+export async function getAnnualRainfall(location) {
+  const { latitude, longitude } = location
+  try {
+    if (!DIRECT) {
+      const res = await fetchWithTimeout(
+        `${API_BASE_URL}/weather/annual-rainfall?lat=${latitude}&lon=${longitude}`,
+      )
+      const body = await res.json().catch(() => ({}))
+      if (!res.ok || body.success === false) throw new ApiError('Rainfall request failed', res.status)
+      return body.data
+    }
+
+    const end = new Date(Date.now() - 6 * 864e5)
+    const start = new Date(end.getTime() - 365 * 864e5)
+    const iso = (d) => d.toISOString().slice(0, 10)
+    const url =
+      `${OPEN_METEO_ARCHIVE_URL}?latitude=${latitude}&longitude=${longitude}` +
+      `&start_date=${iso(start)}&end_date=${iso(end)}&daily=precipitation_sum&timezone=auto`
+    const res = await fetchWithTimeout(url, { timeout: 12000 })
+    if (!res.ok) throw new ApiError(`Archive provider error (${res.status})`, res.status)
+    const json = await res.json()
+    const sums = json.daily?.precipitation_sum ?? []
+    if (!sums.length) return null
+    return { annualRainfallMm: Math.round(sums.reduce((a, v) => a + (v ?? 0), 0)), isMock: false }
+  } catch {
+    return null
   }
 }
