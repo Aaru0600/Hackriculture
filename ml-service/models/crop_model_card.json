@@ -1,0 +1,79 @@
+{
+  "task": "crop_recommendation",
+  "model_type": "RandomForestClassifier (7 agronomic inputs)",
+  "features": [
+    "nitrogen",
+    "phosphorus",
+    "potassium",
+    "temperature",
+    "humidity",
+    "ph",
+    "rainfall"
+  ],
+  "classes": [
+    "apple",
+    "banana",
+    "blackgram",
+    "chickpea",
+    "coconut",
+    "coffee",
+    "cotton",
+    "grapes",
+    "jute",
+    "kidneybeans",
+    "lentil",
+    "maize",
+    "mango",
+    "mothbeans",
+    "mungbean",
+    "muskmelon",
+    "orange",
+    "papaya",
+    "pigeonpeas",
+    "pomegranate",
+    "rice",
+    "watermelon"
+  ],
+  "dataset": {
+    "path": "data\\crop_dataset.csv",
+    "rows": 2200,
+    "sha256": "734f06ae488803b1c7996c2be226510c051c9b44fafe4ac726bb147276367258",
+    "synthetic": false,
+    "source": "Kaggle - Crop Recommendation Dataset (N,P,K,temperature,humidity,ph,rainfall -> crop)"
+  },
+  "metrics": {
+    "accuracy": 0.9932,
+    "macro_f1": 0.9932,
+    "top3_accuracy": 1.0
+  },
+  "cv_accuracy": {
+    "mean": 0.995,
+    "std": 0.0027
+  },
+  "feature_importance": {
+    "humidity": 0.3085,
+    "nitrogen": 0.2071,
+    "rainfall": 0.1724,
+    "potassium": 0.154,
+    "phosphorus": 0.1139,
+    "ph": 0.0085,
+    "temperature": 0.006
+  },
+  "feature_defaults": {
+    "nitrogen": 37.0,
+    "phosphorus": 51.0,
+    "potassium": 32.0,
+    "temperature": 25.599,
+    "humidity": 80.473,
+    "ph": 6.425,
+    "rainfall": 94.868
+  },
+  "versions": {
+    "python": "3.13.9",
+    "scikit_learn": "1.9.0",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5"
+  },
+  "created_at": "2026-09-10T13:02:02.151923+00:00",
+  "disclaimer": "Suitability scores are model probabilities from soil/weather inputs only - they ignore market, seed availability, pests and local practice. Confirm with a local agricultural officer before sowing."
+}

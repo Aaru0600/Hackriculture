@@ -1,0 +1,91 @@
+{
+  "model_type": "HistGradientBoostingRegressor (squared error), sklearn Pipeline with one-hot categoricals",
+  "target": "yield_t_ha",
+  "target_units": "tonnes per hectare",
+  "target_transform": "log1p",
+  "residual_std_relative": 0.2312,
+  "interval_method": "point * (1 +/- 1.28 * residual_std_relative), ~80% nominal",
+  "features": {
+    "numeric": [
+      "crop_year",
+      "area_ha",
+      "annual_rainfall_mm",
+      "fertilizer_per_ha",
+      "pesticide_per_ha"
+    ],
+    "categorical": [
+      "crop",
+      "state",
+      "season"
+    ]
+  },
+  "dataset": {
+    "path": "data\\yield_dataset.csv",
+    "rows": 5153,
+    "sha256": "c279803a0120b317e5bbc68f8995c5f67a388733e29c4c2648eed698c9b9db50",
+    "synthetic": false,
+    "source": "Kaggle - Crop Yield in Indian States Dataset (state-year aggregates, 1997-2020)"
+  },
+  "metrics": {
+    "baseline_linear_holdout": {
+      "mae": 7.6989,
+      "rmse": 19.3154,
+      "r2": -0.0755,
+      "mape_pct": 140.06
+    },
+    "gbm_train": {
+      "mae": 0.7091,
+      "rmse": 2.1947,
+      "r2": 0.987,
+      "mape_pct": 11.1
+    },
+    "gbm_holdout": {
+      "mae": 1.2028,
+      "rmse": 3.8675,
+      "r2": 0.9569,
+      "mape_pct": 17.71
+    },
+    "gbm_cv_r2_logspace": {
+      "mean": 0.9783,
+      "std": 0.0011
+    },
+    "interval_80_coverage_holdout": 0.87
+  },
+  "feature_importance": {
+    "state": 0.339,
+    "area_ha": 0.3385,
+    "season": 0.1518,
+    "annual_rainfall_mm": 0.0826,
+    "crop_year": 0.0782,
+    "fertilizer_per_ha": 0.0055,
+    "pesticide_per_ha": 0.0043
+  },
+  "feature_defaults": {
+    "crop_year": 2020,
+    "area_ha": 38387.0,
+    "annual_rainfall_mm": 1316.2,
+    "fertilizer_per_ha": 144.49,
+    "pesticide_per_ha": 0.27,
+    "crop": "rice",
+    "state": "karnataka",
+    "season": "kharif"
+  },
+  "per_crop_median_yield_t_ha": {
+    "cotton": 0.807,
+    "groundnut": 1.195,
+    "maize": 1.951,
+    "potato": 10.271,
+    "rice": 2.205,
+    "soybean": 1.016,
+    "sugarcane": 58.083,
+    "wheat": 1.676
+  },
+  "versions": {
+    "python": "3.13.9",
+    "scikit_learn": "1.9.0",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5"
+  },
+  "created_at": "2026-09-10T12:36:39.795080+00:00",
+  "disclaimer": "Trained on state-year AGGREGATE data (no plot-level soil chemistry). The service applies a separate agronomic adjustment for soil / temperature inputs. Show every prediction with a 'verify with a local agricultural expert / soil test' note."
+}

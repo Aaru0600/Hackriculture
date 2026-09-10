@@ -1,0 +1,908 @@
+{
+  "common": {
+    "getStarted": "தொடங்குங்கள்",
+    "exploreFeatures": "அம்சங்களைப் பாருங்கள்",
+    "login": "உள்நுழைவு",
+    "register": "பதிவு செய்க",
+    "logout": "வெளியேறு",
+    "learnMore": "மேலும் அறிக",
+    "poweredByAi": "ஏஐ மற்றும் இயந்திர கற்றலால் இயக்கப்படுகிறது",
+    "language": "மொழி",
+    "openMenu": "மெனுவைத் திற",
+    "closeMenu": "மெனுவை மூடு",
+    "backToHome": "முகப்புக்குத் திரும்பு",
+    "useMyLocation": "எனது இருப்பிடத்தைப் பயன்படுத்து",
+    "search": "தேடு",
+    "refresh": "புதுப்பி",
+    "retry": "மீண்டும் முயற்சி செய்",
+    "apply": "பயன்படுத்து",
+    "change": "மாற்று",
+    "loading": "ஏற்றுகிறது",
+    "today": "இன்று",
+    "now": "இப்போது",
+    "cancel": "Cancel",
+    "printReport": "Print / Save as PDF",
+    "save": "Save",
+    "notSet": "Not set"
+  },
+  "nav": {
+    "features": "அம்சங்கள்",
+    "howItWorks": "இது எப்படி வேலை செய்கிறது",
+    "modules": "தொகுதிகள்",
+    "about": "பற்றி",
+    "dashboard": "டாஷ்போர்டு"
+  },
+  "validation": {
+    "required": "இந்தப் புலம் தேவை",
+    "email": "சரியான மின்னஞ்சல் முகவரியை உள்ளிடவும்",
+    "phone": "சரியான 10-இலக்க கைபேசி எண்ணை உள்ளிடவும்",
+    "emailOrPhone": "சரியான மின்னஞ்சல் அல்லது கைபேசி எண்ணை உள்ளிடவும்",
+    "minLength": "குறைந்தது 6 எழுத்துகளைப் பயன்படுத்தவும்",
+    "passwordMatch": "கடவுச்சொற்கள் பொருந்தவில்லை",
+    "number": "ஒரு எண்ணை உள்ளிடவும்",
+    "range": "மதிப்பு வரம்புக்கு வெளியே உள்ளது",
+    "terms": "தொடர விதிமுறைகளை ஏற்கவும்"
+  },
+  "auth": {
+    "signedInAs": "{{name}} ஆக உள்நுழைந்துள்ளீர்கள்",
+    "brandHeading": "தரவால் ஆதரிக்கப்படும் வயல் முடிவுகள்",
+    "brandPoints": [
+      "உங்கள் மண் மற்றும் வானிலைக்கான பயிர், உர மற்றும் பாசன ஆலோசனை",
+      "நேரடி வானிலை மற்றும் 7-நாள் கண்ணோட்டம், விவசாய எச்சரிக்கைகளுடன்",
+      "உங்கள் மொழியில், எந்தத் தொலைபேசியிலும் செயல்படும்"
+    ],
+    "errors": {
+      "generic": "ஏதோ தவறு நடந்தது. மீண்டும் முயற்சிக்கவும்."
+    },
+    "units": {
+      "acre": "ஏக்கர்",
+      "hectare": "ஹெக்டேர்",
+      "bigha": "பிகா"
+    },
+    "fields": {
+      "name": "முழுப் பெயர்",
+      "namePlaceholder": "எ.கா. ரமேஷ் குமார்",
+      "identifier": "மின்னஞ்சல் அல்லது கைபேசி எண்",
+      "identifierPlaceholder": "you@example.com அல்லது 98765 43210",
+      "password": "கடவுச்சொல்",
+      "passwordPlaceholder": "உங்கள் கடவுச்சொல்",
+      "newPasswordPlaceholder": "குறைந்தது 6 எழுத்துகள்",
+      "confirmPassword": "கடவுச்சொல்லை உறுதிப்படுத்தவும்",
+      "showPassword": "கடவுச்சொல்லைக் காட்டு",
+      "location": "உங்கள் வயல் எங்கே உள்ளது?",
+      "state": "மாநிலம்",
+      "statePlaceholder": "உங்கள் மாநிலத்தைத் தேர்ந்தெடுக்கவும்",
+      "district": "மாவட்டம்",
+      "districtPlaceholder": "எ.கா. நாக்பூர்",
+      "language": "விருப்ப மொழி",
+      "farmSize": "வயல் அளவு",
+      "farmSizeHint": "விருப்பத்தேர்வு - பரிந்துரைகளை மேம்படுத்தும்",
+      "unit": "அலகு"
+    },
+    "login": {
+      "title": "மீண்டும் வரவேற்கிறோம்",
+      "subtitle": "உங்கள் HACKRICULTURE கணக்கில் உள்நுழையவும்.",
+      "submit": "உள்நுழைவு",
+      "remember": "என்னை உள்நுழைந்திருக்க வைக்கவும்",
+      "forgot": "கடவுச்சொல் மறந்துவிட்டதா?",
+      "noAccount": "HACKRICULTURE-க்கு புதியவரா?",
+      "demoHint": "டெமோ நிர்வாகி"
+    },
+    "register": {
+      "title": "உங்கள் கணக்கை உருவாக்கவும்",
+      "subtitle": "சில விவரங்கள், உங்கள் வயல் டாஷ்போர்டு தயார்.",
+      "submit": "கணக்கை உருவாக்கு",
+      "terms": "பயன்பாட்டு விதிமுறைகள் மற்றும் தனியுரிமைக் கொள்கையை ஏற்கிறேன்.",
+      "haveAccount": "ஏற்கனவே கணக்கு உள்ளதா?"
+    },
+    "forgot": {
+      "title": "உங்கள் கடவுச்சொல்லை மீட்டமைக்கவும்",
+      "subtitle": "உங்கள் மின்னஞ்சல் அல்லது கைபேசி எண்ணை உள்ளிடவும், மீட்டமைப்பு இணைப்பை அனுப்புவோம்.",
+      "submit": "மீட்டமைப்பு இணைப்பை அனுப்பு",
+      "backToLogin": "உள்நுழைவுக்குத் திரும்பு",
+      "sentTitle": "உங்கள் இன்பாக்ஸைப் பார்க்கவும்",
+      "sentBody": "இந்த விவரங்களுடன் ஒரு கணக்கு பொருந்தினால், கடவுச்சொல் மீட்டமைப்பு இணைப்பு அனுப்பப்படுகிறது."
+    }
+  },
+  "hero": {
+    "badge": "ஏஐ மற்றும் இயந்திர கற்றலால் இயக்கப்படுகிறது",
+    "title": "புத்திசாலித்தனமாக விளைவியுங்கள். சிறப்பாக கணியுங்கள். நிலையான விவசாயம் செய்யுங்கள்.",
+    "subtitle": "ஏஐ அடிப்படையிலான பயிர் மகசூல் கணிப்பு, உர திட்டமிடல், பாசன நுண்ணறிவு மற்றும் தனிப்பயன் விவசாய பரிந்துரைகள் - அனைத்தும் ஒரே தளத்தில்.",
+    "ctaPrimary": "தொடங்குங்கள்",
+    "ctaSecondary": "அம்சங்களைப் பாருங்கள்",
+    "trustNote": "இந்திய விவசாயிகள், மாணவர்கள், ஆராய்ச்சியாளர்கள் மற்றும் வேளாண் அதிகாரிகளுக்காக உருவாக்கப்பட்டது.",
+    "visualCaption": "நேரடி பண்ணை நுண்ணறிவு",
+    "cards": {
+      "yield": "எதிர்பார்க்கப்படும் மகசூல்",
+      "yieldValue": "4.8 டன்/ஹெ",
+      "soil": "மண் ஆரோக்கியம்",
+      "soilValue": "78%",
+      "water": "நீர் தேவை",
+      "waterValue": "32 மிமீ",
+      "weather": "24 மணி நேரத்தில் மழை",
+      "weatherValue": "72%"
+    }
+  },
+  "stats": {
+    "heading": "ஒவ்வொரு வயல் முடிவுக்கும் ஒரு தளம்",
+    "items": {
+      "predictions": "ஏஐ அடிப்படையிலான கணிப்புகள்",
+      "irrigation": "ஸ்மார்ட் பாசனம்",
+      "fertilizer": "உர மேம்படுத்தல்",
+      "weather": "வானிலை நுண்ணறிவு",
+      "multilingual": "பன்மொழி ஆதரவு"
+    }
+  },
+  "features": {
+    "eyebrow": "நீங்கள் என்ன செய்யலாம்",
+    "heading": "பயிர் சுழற்சியின் ஒவ்வொரு கட்டத்திற்கும் நுண்ணறிவு",
+    "subheading": "எதை விதைப்பது என்பதைத் தேர்ந்தெடுப்பது முதல் அடுத்த பாசனத் திட்டமிடல் வரை - ஒவ்வொரு பரிந்துரையும் தெளிவானது மற்றும் வயலுக்கு ஏற்றது.",
+    "items": {
+      "yield": {
+        "title": "பயிர் மகசூல் கணிப்பு",
+        "desc": "மண், பயிர், பண்ணை மற்றும் சுற்றுச்சூழல் அளவுருக்களைப் பயன்படுத்தி எதிர்பார்க்கப்படும் உற்பத்தியைக் கணியுங்கள்."
+      },
+      "cropReco": {
+        "title": "பயிர் பரிந்துரை",
+        "desc": "உங்கள் மண்ணின் ஊட்டச்சத்துக்கள், வகை, வானிலை, இருப்பிடம் மற்றும் பருவத்திற்கு ஏற்ற சிறந்த பயிர்களைப் பெறுங்கள்."
+      },
+      "fertilizer": {
+        "title": "உர பரிந்துரை",
+        "desc": "என், பி, கே மற்றும் பிஎச் ஆகியவற்றை பகுப்பாய்வு செய்து, பின்னர் உரம், அளவு மற்றும் நேரத்தைப் பெறுங்கள் - பற்றாக்குறை விளக்கத்துடன்."
+      },
+      "irrigation": {
+        "title": "ஸ்மார்ட் பாசனம்",
+        "desc": "நீர் தேவை, அடுத்த பாசன நேரம் மற்றும் கால அளவு - மழை எதிர்பார்க்கப்படும்போது தானாகவே சரிசெய்யப்படும்."
+      },
+      "weather": {
+        "title": "வானிலை நுண்ணறிவு",
+        "desc": "வெப்பநிலை, ஈரப்பதம், மழை, காற்று, 7-நாள் முன்னறிவிப்பு மற்றும் சரியான நேரத்தில் விவசாய எச்சரிக்கைகள்."
+      },
+      "assistant": {
+        "title": "ஏஐ விவசாய உதவியாளர்",
+        "desc": "பயிர்கள், உரங்கள், பாசனம், வானிலை மற்றும் விவசாய நடைமுறைகள் பற்றி கிருஷிஏஐ-யிடம் கேளுங்கள்."
+      },
+      "multilingual": {
+        "title": "பன்மொழி ஆதரவு",
+        "desc": "தளத்தை ஆங்கிலம், இந்தி மற்றும் பிற இந்திய பிராந்திய மொழிகளில் பயன்படுத்துங்கள்."
+      },
+      "history": {
+        "title": "விவசாய வரலாறு",
+        "desc": "முந்தைய கணிப்புகள், பரிந்துரைகள், பயிர் வரலாறு மற்றும் மகசூல் போக்குகளைப் பாருங்கள்."
+      }
+    }
+  },
+  "howItWorks": {
+    "eyebrow": "இது எப்படி வேலை செய்கிறது",
+    "heading": "நான்கு எளிய படிகளில் பதில்கள்",
+    "steps": {
+      "one": {
+        "title": "உங்கள் பண்ணையைச் சேர்க்கவும்",
+        "desc": "இருப்பிடம், அளவு, மண் வகை மற்றும் தற்போதைய பயிர் - ஒரு முறை."
+      },
+      "two": {
+        "title": "வயல் தரவை உள்ளிடவும்",
+        "desc": "மண் பரிசோதனை மதிப்புகள் மற்றும் உள்ளூர் வானிலை, அல்லது நாங்கள் முன்னறிவிப்பைப் பெறுகிறோம்."
+      },
+      "three": {
+        "title": "ஏஐ பகுப்பாய்வு",
+        "desc": "மாதிரிகள் உங்கள் உள்ளீடுகளை மதிப்பிட்டு உங்கள் நிலைமைகளுக்கான விருப்பங்களை தரவரிசைப்படுத்துகின்றன."
+      },
+      "four": {
+        "title": "நம்பிக்கையுடன் செயல்படுங்கள்",
+        "desc": "தெளிவான பரிந்துரைகள், அவற்றுக்கான காரணங்கள் மற்றும் பதிவிறக்கக்கூடிய அறிக்கை."
+      }
+    }
+  },
+  "modules": {
+    "eyebrow": "தொகுதிகள்",
+    "heading": "ஒவ்வொரு முடிவுக்கும் ஒரு வழிகாட்டப்பட்ட கருவி"
+  },
+  "cta": {
+    "heading": "தரவுடன் விவசாயம் செய்யத் தயாரா?",
+    "subheading": "இலவச கணக்கை உருவாக்கி சில நிமிடங்களில் உங்கள் முதல் ஏஐ பரிந்துரையைப் பெறுங்கள்.",
+    "primary": "தொடங்குங்கள்",
+    "secondary": "உள்நுழைவு"
+  },
+  "footer": {
+    "tagline": "இந்தியாவுக்கான ஏஐ அடிப்படையிலான ஸ்மார்ட் விவசாயம் மற்றும் பயிர் நுண்ணறிவு.",
+    "disclaimer": "முக்கியமான விவசாய முடிவுகளை எடுப்பதற்கு முன் ஏஐ வழங்கிய ஆலோசனையை உள்ளூர் வேளாண் நிபுணர்களிடம் சரிபார்க்கவும்.",
+    "product": "தயாரிப்பு",
+    "resources": "வளங்கள்",
+    "company": "நிறுவனம்",
+    "rights": "அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
+    "builtFor": "ஒரு தேசிய அளவிலான ஹேக்கத்தான் திட்டம்."
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "காலை வணக்கம், {{name}}",
+      "afternoon": "மதிய வணக்கம், {{name}}",
+      "evening": "மாலை வணக்கம், {{name}}",
+      "farmer": "விவசாயி",
+      "sub": "இன்று உங்கள் வயலின் நிலை இதோ."
+    },
+    "nav": {
+      "dashboard": "டாஷ்போர்டு",
+      "cropPrediction": "பயிர் கணிப்பு",
+      "cropRecommendation": "பயிர் பரிந்துரை",
+      "fertilizer": "உரம்",
+      "irrigation": "பாசனம்",
+      "weather": "வானிலை",
+      "myFarm": "என் வயல்",
+      "history": "வரலாறு",
+      "aiAssistant": "ஏஐ உதவியாளர்",
+      "profile": "சுயவிவரம்",
+      "admin": "நிர்வாகி",
+      "alerts": "Alerts"
+    },
+    "bottomNav": {
+      "dashboard": "முகப்பு",
+      "cropPrediction": "கணிப்பு",
+      "cropRecommendation": "பரிந்துரை",
+      "weather": "வானிலை",
+      "profile": "சுயவிவரம்"
+    },
+    "summary": {
+      "title": "வயல் சுருக்கம்",
+      "farmSize": "வயல் அளவு",
+      "currentCrop": "தற்போதைய பயிர்",
+      "soilType": "மண் வகை",
+      "location": "இருப்பிடம்",
+      "growthStage": "வளர்ச்சி நிலை"
+    },
+    "stages": {
+      "landPrep": "நில தயாரிப்பு",
+      "sowing": "விதைப்பு",
+      "germination": "முளைத்தல்",
+      "vegetative": "தாவர வளர்ச்சி",
+      "flowering": "பூக்கும் நிலை",
+      "maturity": "முதிர்ச்சி",
+      "harvest": "அறுவடை"
+    },
+    "kpi": {
+      "expectedYield": "எதிர்பார்க்கப்படும் மகசூல்",
+      "soilHealth": "மண் ஆரோக்கியம்",
+      "waterRequirement": "நீர் தேவை",
+      "cropHealth": "பயிர் ஆரோக்கியம்"
+    },
+    "health": {
+      "title": "வயல் ஆரோக்கிய மதிப்பெண்",
+      "soil": "மண் ஆரோக்கியம்",
+      "water": "நீர் மேலாண்மை",
+      "crop": "பயிர் ஆரோக்கியம்",
+      "weatherRisk": "வானிலை தாங்குதிறன்"
+    },
+    "insight": {
+      "title": "இன்றைய ஏஐ நுண்ணறிவு",
+      "tips": [
+        "மண் ஈரப்பதத்தை அதிகாலையில் சரிபார்க்கவும் - வெயில் ஏறும் முன் அளவீடுகள் மிகவும் நம்பகமானவை.",
+        "நைட்ரஜனை ஒரே கனமான அளவாக இல்லாமல் பருவம் முழுவதும் இரண்டு அல்லது மூன்று அளவுகளாகப் பிரிக்கவும்.",
+        "வயல் குறிப்பேடு வைத்திருங்கள். விதைப்பு தேதிகளும் கடந்த மகசூலும் ஒவ்வொரு பரிந்துரையையும் கூர்மையாக்கும்.",
+        "வெப்பமான வானிலையில் ஆவியாதல் இழப்பைக் குறைக்க அதிகாலை அல்லது அந்தி நேரத்தில் பாசனம் செய்யவும்."
+      ]
+    },
+    "weather": {
+      "title": "இன்றைய வானிலை",
+      "noLocation": "இங்கே உள்ளூர் வானிலையைப் பார்க்க உங்கள் வயல் இருப்பிடத்தை அமைக்கவும்.",
+      "setLocation": "இருப்பிடத்தை அமை",
+      "viewFull": "முழு முன்னறிவிப்பைப் பார்"
+    },
+    "quickActions": {
+      "title": "விரைவு செயல்கள்",
+      "yield": "மகசூல் கணிப்பு",
+      "crop": "பயிர் பரிந்துரை",
+      "fertilizer": "உர திட்டம்",
+      "irrigation": "பாசன திட்டம்"
+    }
+  },
+  "weather": {
+    "title": "வானிலை நுண்ணறிவு",
+    "subtitle": "உங்கள் வயலுக்கான நேரடி நிலைமைகள் மற்றும் 7-நாள் கண்ணோட்டம், விவசாய எச்சரிக்கைகளுடன்.",
+    "updatedAt": "{{time}} இல் புதுப்பிக்கப்பட்டது",
+    "poweredBy": "வானிலை தரவு {{provider}} வழங்கியது",
+    "metrics": {
+      "temperature": "வெப்பநிலை",
+      "feelsLike": "உணரப்படுவது",
+      "humidity": "ஈரப்பதம்",
+      "rainChance": "மழை வாய்ப்பு",
+      "wind": "காற்றின் வேகம்",
+      "rainfall": "மழை (24 மணி)",
+      "condition": "நிலை"
+    },
+    "forecast": {
+      "heading": "7-நாள் முன்னறிவிப்பு",
+      "high": "அதிகபட்சம்",
+      "low": "குறைந்தபட்சம்",
+      "rain": "மழை"
+    },
+    "alerts": {
+      "heading": "விவசாய எச்சரிக்கைகள்",
+      "none": "தற்போது வானிலை எச்சரிக்கை இல்லை. வயல் வேலைக்கு நிலைமைகள் சாதாரணமாக உள்ளன."
+    },
+    "location": {
+      "detecting": "உங்கள் இருப்பிடத்தைக் கண்டறிகிறது...",
+      "permissionDenied": "இருப்பிட அனுமதி தடுக்கப்பட்டது. அதற்கு பதிலாக உங்கள் பகுதியைத் தேடுங்கள்.",
+      "unavailable": "உங்கள் இருப்பிடத்தைப் பெற முடியவில்லை. அதற்கு பதிலாக உங்கள் பகுதியைத் தேடுங்கள்.",
+      "searchPlaceholder": "கிராமம், நகரம் அல்லது மாவட்டத்தைத் தேடுங்கள்",
+      "noResults": "இடங்கள் எதுவும் கிடைக்கவில்லை. எழுத்துப்பிழையைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்.",
+      "current": "தற்போதைய இருப்பிடம்",
+      "changeLocation": "இருப்பிடத்தை மாற்று"
+    },
+    "error": "தற்போது வானிலையை ஏற்ற முடியவில்லை. மீண்டும் முயற்சிக்கவும்."
+  },
+  "wmo": {
+    "clear": "தெளிவான வானம்",
+    "mostlyClear": "பெரும்பாலும் தெளிவு",
+    "partlyCloudy": "ஓரளவு மேகமூட்டம்",
+    "overcast": "அடர்த்தியான மேகம்",
+    "fog": "மூடுபனி",
+    "drizzle": "தூறல்",
+    "rain": "மழை",
+    "heavyRain": "கனமழை",
+    "freezingRain": "உறைபனி மழை",
+    "snow": "பனிப்பொழிவு",
+    "rainShowers": "மழைத் தூவல்கள்",
+    "snowShowers": "பனித் தூவல்கள்",
+    "thunderstorm": "இடியுடன் கூடிய மழை",
+    "thunderstormHail": "ஆலங்கட்டியுடன் புயல்",
+    "unknown": "தெரியவில்லை"
+  },
+  "farmAlerts": {
+    "heavyRain": {
+      "title": "கனமழை எதிர்பார்க்கப்படுகிறது",
+      "body": "அடுத்த {{days}} நாட்களில் சுமார் {{rain}} மிமீ மழை பெய்யக்கூடும். பாசனத்தை நிறுத்தி வயலின் நீர் வடிகாலைச் சரிபார்க்கவும்."
+    },
+    "rain": {
+      "title": "விரைவில் மழை எதிர்பார்க்கப்படுகிறது",
+      "body": "மழை பெய்யக்கூடும் ({{chance}}% வாய்ப்பு). பாசனம் மற்றும் உரம் அல்லது தெளிப்பைத் தள்ளிப்போட பரிசீலிக்கவும்."
+    },
+    "heat": {
+      "title": "அதிக வெப்பநிலை எதிர்பார்க்கப்படுகிறது",
+      "body": "வரும் நாட்களில் அதிகபட்ச வெப்பநிலை சுமார் {{temp}}°C. பயிரின் நீர் அழுத்தத்தைக் கவனித்து அதிகாலை அல்லது மாலையில் பாசனம் செய்யவும்."
+    },
+    "dryAir": {
+      "title": "குறைந்த ஈரப்பதம்",
+      "body": "ஈரப்பதம் சுமார் {{humidity}}%. ஆவியாதல் அதிகமாக இருக்கும் - மண் வழக்கத்தை விட விரைவாக உலரக்கூடும்."
+    },
+    "wind": {
+      "title": "வலுவான காற்று எதிர்பார்க்கப்படுகிறது",
+      "body": "காற்று {{wind}} கிமீ/மணி வரை. தெளிப்பதைத் தவிர்த்து இளம் அல்லது உயரமான பயிர்களுக்கு ஆதரவு அளிக்கவும்."
+    },
+    "cold": {
+      "title": "குளிர் நிலைமைகள்",
+      "body": "குறைந்தபட்ச வெப்பநிலை சுமார் {{temp}}°C. உணர்திறன் பயிர்களுக்கு குளிர் அல்லது பனியிலிருந்து பாதுகாப்பு தேவைப்படலாம்."
+    },
+    "clear": {
+      "title": "வயல் வேலைக்கு நல்ல நிலைமைகள்",
+      "body": "அடுத்த சில நாட்கள் வறண்ட மற்றும் நிலையான வானிலை - விதைப்பு, தெளிப்பு அல்லது அறுவடைக்கு நல்ல வாய்ப்பு."
+    },
+    "fertilizerReminder": {
+      "title": "Fertiliser window",
+      "body": "Your {{crop}} is at an early growth stage. Check whether a fertiliser split is due and confirm the dose with a local officer."
+    }
+  },
+  "fieldData": {
+    "title": "உங்கள் இருப்பிடத்திலிருந்து தானாக நிரப்பு",
+    "subtitle": "நேரடி வானிலை மற்றும் மதிப்பிடப்பட்ட மண் மதிப்புகளைப் பெறுங்கள், அதனால் நீங்கள் அவற்றைத் தட்டச்சு செய்ய வேண்டியதில்லை.",
+    "weatherButton": "வானிலையைப் பெறு",
+    "soilButton": "மண் மதிப்பீட்டைப் பெறு",
+    "applyAll": "இந்த மதிப்புகளைப் பயன்படுத்து",
+    "fetched": "{{place}} க்காகப் பெறப்பட்டது",
+    "soilNote": "மண் மதிப்புகள் உலகளாவிய மண் வரைபடத்திலிருந்து பகுதி மதிப்பீடுகள். சரியான புள்ளிவிவரங்களுக்கு உள்ளூர் மண் பரிசோதனை செய்யவும்.",
+    "unavailable": "இந்த இருப்பிடத்திற்கான தரவைப் பெற முடியவில்லை. நீங்கள் மதிப்புகளை கைமுறையாக உள்ளிடலாம்.",
+    "fields": {
+      "temperature": "வெப்பநிலை",
+      "humidity": "ஈரப்பதம்",
+      "rainfall": "மழை",
+      "soilPH": "மண் பிஎச்",
+      "nitrogen": "நைட்ரஜன்",
+      "soilType": "மண் வகை",
+      "organicCarbon": "கரிம கார்பன்"
+    }
+  },
+  "soilType": {
+    "sandy": "மணல்",
+    "sandyLoam": "மணல் களிமண்",
+    "loam": "களிமண்",
+    "siltLoam": "வண்டல் களிமண்",
+    "silt": "வண்டல்",
+    "clayLoam": "களி களிமண்",
+    "clay": "களிமண்",
+    "unknown": "தெரியவில்லை"
+  },
+  "predict": {
+    "title": "AI Crop Yield Prediction",
+    "subtitle": "Enter your farm details for a data-backed yield estimate. Optional soil and weather inputs refine it.",
+    "optionalHint": "All fields on this step are optional - fill what you know.",
+    "envHint": "Optional. Leave blank to use regional averages, or fill from the Weather page.",
+    "steps": {
+      "farm": "Farm",
+      "soil": "Soil",
+      "environment": "Environment",
+      "crop": "Crop"
+    },
+    "crops": {
+      "rice": "Rice",
+      "wheat": "Wheat",
+      "maize": "Maize",
+      "cotton": "Cotton",
+      "sugarcane": "Sugarcane",
+      "soybean": "Soybean",
+      "groundnut": "Groundnut",
+      "potato": "Potato"
+    },
+    "seasons": {
+      "kharif": "Kharif (monsoon)",
+      "rabi": "Rabi (winter)",
+      "summer": "Summer / Zaid",
+      "wholeYear": "Whole year"
+    },
+    "stages": {
+      "sowing": "Sowing",
+      "vegetative": "Vegetative",
+      "flowering": "Flowering",
+      "maturity": "Maturity"
+    },
+    "months": {
+      "january": "January",
+      "february": "February",
+      "march": "March",
+      "april": "April",
+      "may": "May",
+      "june": "June",
+      "july": "July",
+      "august": "August",
+      "september": "September",
+      "october": "October",
+      "november": "November",
+      "december": "December"
+    },
+    "fields": {
+      "crop": "Crop",
+      "state": "State",
+      "selectState": "Select your state",
+      "season": "Season",
+      "farmSize": "Farm size (hectares)",
+      "farmSizeHint": "Cultivated area for this crop, in hectares",
+      "soilType": "Soil type",
+      "optional": "Optional",
+      "nitrogen": "Nitrogen (N)",
+      "phosphorus": "Phosphorus (P)",
+      "potassium": "Potassium (K)",
+      "soilPH": "Soil pH",
+      "temperature": "Season temperature",
+      "humidity": "Relative humidity",
+      "rainfall": "Annual rainfall",
+      "rainfallHint": "Total rainfall over the year, in mm",
+      "sowMonth": "Sowing month",
+      "growthStage": "Current growth stage",
+      "previousYield": "Previous season yield",
+      "previousYieldHint": "Your last yield for this crop, in t/ha (stored for your records)",
+      "district": "District"
+    },
+    "form": {
+      "back": "Back",
+      "next": "Next",
+      "predict": "Predict Yield",
+      "predicting": "Predicting...",
+      "failed": "Could not get a prediction. Please try again."
+    },
+    "result": {
+      "predictedYield": "Predicted Yield",
+      "tonsPerHa": "tons / hectare",
+      "range": "Likely range: {{low}} - {{high}} t/ha",
+      "expectedProduction": "Expected production: about {{value}} tonnes",
+      "modelScore": "model score",
+      "quality": {
+        "high": "Good model agreement",
+        "medium": "Moderate model agreement",
+        "low": "Low model agreement"
+      },
+      "risk": "Risk",
+      "riskLevels": {
+        "low": "Low",
+        "moderate": "Moderate",
+        "high": "High"
+      },
+      "qualityNote": "This score reflects how consistent the model is for these inputs - it is not a probability. Verify with a local expert and a soil test.",
+      "whyTitle": "What is influencing this estimate",
+      "adjustmentNote": "Regional baseline {{core}} t/ha, adjusted x{{factor}} for your soil and weather inputs.",
+      "rainfallVsYield": "Rainfall vs yield",
+      "tempVsYield": "Temperature vs yield",
+      "rainfallMm": "Rainfall (mm)",
+      "tempC": "Temperature (°C)",
+      "disclaimer": "Estimate only. Yields vary with local soil, weather and management. Verify with a local agricultural expert and a current soil test before acting.",
+      "newPrediction": "New prediction",
+      "downloadReport": "Download report"
+    }
+  },
+  "cropRec": {
+    "title": "Crop Recommendation",
+    "subtitle": "Enter your current soil test and typical season weather. The model ranks the crops best suited to those conditions.",
+    "formHint": "All seven values are required - use your latest soil report and seasonal averages.",
+    "submit": "Get Recommendations",
+    "working": "Analysing...",
+    "failed": "Could not get recommendations. Please try again.",
+    "bestMatch": "Best match",
+    "expectedYield": "Yield",
+    "water": "Water",
+    "days": "days",
+    "alsoConsider": "Also consider",
+    "tryAnother": "Try different values",
+    "disclaimer": "Suitability is a model score from soil and weather only. It ignores market prices, seed availability and pests. Confirm with a local agricultural officer before sowing.",
+    "waterLevels": {
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "fields": {
+      "nitrogen": "Nitrogen (N)",
+      "phosphorus": "Phosphorus (P)",
+      "potassium": "Potassium (K)",
+      "temperature": "Temperature",
+      "humidity": "Humidity",
+      "soilPH": "Soil pH",
+      "rainfall": "Rainfall",
+      "soilType": "Soil type",
+      "season": "Season"
+    }
+  },
+  "irrigation": {
+    "title": "Smart Irrigation",
+    "subtitle": "The model rates your field's irrigation need; a rule layer then estimates the water depth and schedule.",
+    "formHint": "Only crop is required. Fill soil moisture and weather for a sharper estimate.",
+    "submit": "Get Irrigation Plan",
+    "working": "Calculating...",
+    "failed": "Could not build an irrigation plan. Please try again.",
+    "tryAnother": "Start over",
+    "disclaimer": "The need level is from a trained model; the depth and schedule are a rule of thumb. Check against your own field moisture readings and local advice before irrigating.",
+    "needLevels": {
+      "high": "High need",
+      "medium": "Medium need",
+      "low": "Low need"
+    },
+    "methods": {
+      "canal": "Canal / flood",
+      "drip": "Drip",
+      "rainfed": "Rainfed",
+      "sprinkler": "Sprinkler"
+    },
+    "fields": {
+      "crop": "Crop",
+      "soilType": "Soil type",
+      "growthStage": "Growth stage",
+      "irrigationType": "Irrigation method",
+      "soilMoisture": "Soil moisture",
+      "temperature": "Temperature",
+      "humidity": "Humidity",
+      "rainfall": "Recent rainfall",
+      "forecastRainProbability": "Rain forecast",
+      "farmSize": "Field area"
+    },
+    "result": {
+      "need": "Irrigation need",
+      "modelScore": "model score {{value}}%",
+      "nextIrrigation": "Next irrigation",
+      "duration": "Approx. run time",
+      "volume": "Water volume",
+      "assumptions": "Assumptions"
+    }
+  },
+  "fertilizer": {
+    "badge": "Rule-based advisory",
+    "title": "Fertilizer Recommendation",
+    "subtitle": "Compares your soil N-P-K against the recommended dose for the crop and converts each gap into a common fertilizer.",
+    "submit": "Get Fertilizer Plan",
+    "working": "Calculating...",
+    "failed": "Could not build a fertilizer plan. Please try again.",
+    "tryAnother": "Start over",
+    "disclaimer": "Rule-based estimate from typical recommended doses. Dosage is not universally correct - get a local soil test and confirm with an agronomist before applying.",
+    "fields": {
+      "crop": "Crop",
+      "growthStage": "Growth stage",
+      "soilType": "Soil type",
+      "nitrogen": "Soil nitrogen (N)",
+      "phosphorus": "Soil phosphorus (P)",
+      "potassium": "Soil potassium (K)",
+      "soilPH": "Soil pH"
+    },
+    "result": {
+      "deficiencies": "Deficiencies",
+      "none": "None - soil is at or above the recommended dose",
+      "nutrient": "Nutrient",
+      "deficit": "Deficit",
+      "fertilizer": "Fertilizer",
+      "quantity": "Quantity",
+      "timing": "When to apply",
+      "method": "How to apply"
+    }
+  },
+  "assistant": {
+    "title": "KrishiAI Assistant",
+    "intro": "Ask about crops, soil, fertiliser, irrigation or weather. Type or use the mic.",
+    "thinking": "Thinking...",
+    "placeholder": "Ask a farming question...",
+    "speak": "Speak your question",
+    "error": "Sorry, I could not answer that. Please try again.",
+    "disclaimer": "General guidance only - confirm anything that affects money or crop health with your local agricultural officer.",
+    "suggestions": [
+      "Which crop suits my soil?",
+      "How much urea for wheat?",
+      "Is it safe to irrigate before rain?"
+    ]
+  },
+  "voiceNav": {
+    "label": "Voice navigation - tap and say a page name"
+  },
+  "autofill": {
+    "title": "Auto-fill from my location",
+    "subtitle": "Pulls soil and current weather so you do not have to type them.",
+    "done": "Filled soil and weather values - adjust any of them if you have a soil test.",
+    "failed": "Could not fetch data for that location. Enter values manually.",
+    "soilMock": "Soil service was unavailable - using a labelled sample estimate.",
+    "filled": "{{count}} values auto-filled",
+    "disclaimer": "Auto-filled values are model estimates, not a soil-lab test. Every field stays editable."
+  },
+  "history": {
+    "badge": "Your records",
+    "title": "Farming History",
+    "subtitle": "Every yield prediction and recommendation you have run, newest first.",
+    "empty": "Nothing yet. Predictions and recommendations you run while signed in will appear here.",
+    "yieldTrend": "Predicted yield over time",
+    "tabs": {
+      "predictions": "Predictions",
+      "recommendations": "Recommendations"
+    },
+    "rows": {
+      "yieldFor": "Yield: {{crop}}",
+      "crop": "Crop recommendation",
+      "irrigation": "Irrigation plan",
+      "fertilizer": "Fertiliser plan"
+    }
+  },
+  "learn": {
+    "eyebrow": "How it works",
+    "allFeatures": "All features",
+    "readMore": "Read more",
+    "ctaHint": "Ready to try it? You will need to sign in.",
+    "disclaimer": "These guides explain the tools at a general level. Every result in the app is an estimate - verify with a local agricultural expert and a soil test before acting."
+  },
+  "myFarm": {
+    "badge": "Your fields",
+    "title": "My Farm",
+    "subtitle": "Keep your field and crop details in one place. Used to pre-fill the prediction tools.",
+    "addFarm": "Add farm",
+    "addFirstFarm": "Add your first farm",
+    "emptyBody": "You have not added a farm yet. Add one to track its soil, irrigation and current crop.",
+    "edit": "Edit",
+    "notSet": "Not set",
+    "loadFailed": "Could not load your farms. Please try again.",
+    "deleteFarm": "Delete this farm",
+    "delete": "Delete",
+    "deleteFailed": "Could not delete the farm. Please try again.",
+    "confirmDelete": "Delete \"{{name}}\"? This cannot be undone.",
+    "profile": {
+      "title": "Farm profile",
+      "location": "Location",
+      "area": "Farm size",
+      "soilType": "Soil type",
+      "irrigationType": "Irrigation"
+    },
+    "crop": {
+      "title": "Current crop",
+      "name": "Crop name",
+      "season": "Season",
+      "sownOn": "Sowing date",
+      "growthStage": "Growth stage",
+      "expectedHarvest": "Expected harvest",
+      "none": "No crop cycle recorded yet. Add one with Edit."
+    },
+    "timeline": {
+      "title": "Crop timeline",
+      "landPrep": "Land preparation",
+      "sowing": "Sowing",
+      "germination": "Germination",
+      "vegetative": "Vegetative growth",
+      "flowering": "Flowering",
+      "harvest": "Harvest"
+    },
+    "units": {
+      "acre": "acre",
+      "hectare": "hectare",
+      "bigha": "bigha"
+    },
+    "irrigation": {
+      "canal": "Canal",
+      "borewell": "Borewell",
+      "drip": "Drip",
+      "sprinkler": "Sprinkler",
+      "rainfed": "Rain-fed",
+      "tank": "Tank"
+    },
+    "form": {
+      "createTitle": "Add a farm",
+      "editTitle": "Edit farm",
+      "farmName": "Farm name",
+      "area": "Farm size",
+      "areaUnit": "Unit",
+      "location": "Location",
+      "coordsSet": "Coordinates set: {{lat}}, {{lon}}",
+      "useMyLocation": "Use my location",
+      "locating": "Getting location...",
+      "soilType": "Soil type",
+      "irrigationType": "Irrigation",
+      "create": "Add farm",
+      "save": "Save changes",
+      "harvestBeforeSowing": "Harvest date is before the sowing date",
+      "saveFailed": "Could not save the farm. Please try again."
+    }
+  },
+  "alerts": {
+    "badge": "Weather & crop",
+    "title": "Farming Alerts",
+    "subtitle": "Timely warnings from the forecast for your saved location and your farms.",
+    "noLocation": "No location yet. Set a weather location or add a farm with coordinates to get alerts.",
+    "setLocation": "Set location",
+    "addFarm": "Add a farm",
+    "savedLocation": "Saved location",
+    "filter": {
+      "all": "All",
+      "unread": "Unread"
+    },
+    "markAllRead": "Mark all read",
+    "markRead": "Mark read",
+    "markUnread": "Mark unread",
+    "allCaughtUp": "You are all caught up. No alerts to show here.",
+    "forecastNote": "Alerts are generated on this device from the live forecast, not stored on a server.",
+    "openWeather": "Open Weather Intelligence"
+  },
+  "profile": {
+    "badge": "Your account",
+    "title": "Profile",
+    "subtitle": "Your details, sign-in and language. Used across the app.",
+    "memberSince": "Member since {{date}}",
+    "details": "Personal details",
+    "save": "Save changes",
+    "saved": "Saved",
+    "saveFailed": "Could not save. Please try again.",
+    "emailLocked": "Email is used to sign in and cannot be changed here.",
+    "fields": {
+      "name": "Full name",
+      "phone": "Mobile number",
+      "email": "Email",
+      "state": "State",
+      "district": "District",
+      "language": "Preferred language",
+      "farmSize": "Default farm size",
+      "farmSizeUnit": "Unit"
+    },
+    "password": {
+      "title": "Password",
+      "current": "Current password",
+      "new": "New password",
+      "confirm": "Confirm new password",
+      "submit": "Update password",
+      "done": "Password updated",
+      "failed": "Could not update the password."
+    },
+    "plan": {
+      "title": "Plan",
+      "free": "Free",
+      "body": "You are on the free plan - every core tool is included. Premium (bulk exports, team access, priority support) is planned.",
+      "upgradeSoon": "Upgrade (coming soon)"
+    }
+  },
+  "admin": {
+    "badge": "Admin",
+    "backToApp": "Back to app",
+    "signedInAs": "Signed in as {{name}}",
+    "mockNote": "Showing sample data - connect the backend (VITE_USE_MOCKS=false) for live figures.",
+    "tabs": {
+      "overview": "Overview",
+      "users": "Users",
+      "datasets": "Datasets",
+      "models": "ML Models",
+      "reports": "Reports"
+    },
+    "stats": {
+      "totalFarmers": "Total farmers",
+      "totalAdmins": "Admins",
+      "activeUsers": "Active users",
+      "predictionsMade": "Predictions made",
+      "recommendationsGenerated": "Recommendations generated",
+      "totalFarms": "Farms",
+      "alerts": "Alerts"
+    },
+    "overview": {
+      "title": "Platform overview",
+      "subtitle": "Usage across the platform.",
+      "recsByKind": "Recommendations by type"
+    },
+    "users": {
+      "title": "Users",
+      "count": "{{count}} account(s)",
+      "search": "Search name / email / phone",
+      "name": "Name",
+      "contact": "Contact",
+      "location": "Location",
+      "role": "Role",
+      "joined": "Joined",
+      "actions": "Actions",
+      "makeAdmin": "Make admin",
+      "makeFarmer": "Make farmer",
+      "confirmDelete": "Confirm delete",
+      "empty": "No users found."
+    },
+    "datasets": {
+      "title": "Datasets",
+      "subtitle": "Registry of the datasets behind the models. Metadata only - the raw files live with the ML service.",
+      "add": "Add dataset",
+      "addTitle": "Register a dataset",
+      "editTitle": "Edit dataset",
+      "name": "Name",
+      "task": "Task",
+      "rows": "Rows",
+      "source": "Source",
+      "status": "Status",
+      "description": "Description",
+      "synthetic": "Synthetic",
+      "empty": "No datasets registered yet.",
+      "rowCount": "{{count}} rows",
+      "tasks": {
+        "yield": "Yield",
+        "crop": "Crop",
+        "irrigation": "Irrigation",
+        "fertilizer": "Fertiliser",
+        "other": "Other"
+      },
+      "statuses": {
+        "active": "Active",
+        "archived": "Archived",
+        "draft": "Draft"
+      }
+    },
+    "models": {
+      "title": "ML models",
+      "live": "Live status from the ML service.",
+      "offline": "ML service not reachable - showing the last known details.",
+      "version": "Version",
+      "trainedAt": "trained",
+      "editStatus": "Edit status",
+      "status": "Status",
+      "notes": "Notes",
+      "noLiveInfo": "Live details unavailable - the ML service did not return model-info.",
+      "retrainNote": "Retraining is run from the ML service (see ml-service/README.md); this panel tracks status and notes only.",
+      "statuses": {
+        "production": "Production",
+        "staging": "Staging",
+        "deprecated": "Deprecated",
+        "retraining": "Retraining"
+      }
+    },
+    "reports": {
+      "title": "Reports",
+      "subtitle": "Generate a snapshot and print it or save as PDF.",
+      "generatedAt": "Generated {{at}}",
+      "footer": "HACKRICULTURE - generated report. Figures reflect the moment of generation.",
+      "empty": "Nothing to show for this report yet.",
+      "types": {
+        "summary": "Summary",
+        "users": "Users",
+        "predictions": "Predictions",
+        "recommendations": "Recommendations"
+      },
+      "col": {
+        "name": "Name",
+        "contact": "Contact",
+        "role": "Role",
+        "joined": "Joined",
+        "user": "User",
+        "crop": "Crop",
+        "result": "Result",
+        "when": "When",
+        "kind": "Type",
+        "summary": "Summary"
+      }
+    }
+  }
+}
