@@ -36,6 +36,17 @@ test('register rejects a weak password', async () => {
   assert.equal(res.body.success, false)
 })
 
+test('register tolerates blank/null optional fields from the form', async () => {
+  // shape the RegisterPage actually sends when fields are left untouched
+  const res = await request.post('/api/auth/register').send({
+    name: 'Blank Fields', email: 'blank@example.com', password: 'greenfield9',
+    phone: '', state: 'Punjab', district: '', preferredLanguage: 'en',
+    farmSize: null, farmSizeUnit: 'acre',
+  })
+  assert.equal(res.status, 201)
+  assert.equal(res.body.data.user.farmSize, null)
+})
+
 test('register rejects a duplicate email', async () => {
   await request.post('/api/auth/register').send(NEW_USER)
   const res = await request.post('/api/auth/register').send(NEW_USER)
