@@ -86,6 +86,6 @@
     "numpy": "2.5.3",
     "pandas": "3.0.5"
   },
-  "created_at": "2026-09-10T12:36:39.795080+00:00",
+  "created_at": "2026-09-10T18:16:57.506569+00:00",
   "disclaimer": "Trained on state-year AGGREGATE data (no plot-level soil chemistry). The service applies a separate agronomic adjustment for soil / temperature inputs. Show every prediction with a 'verify with a local agricultural expert / soil test' note."
 }

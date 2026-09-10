@@ -15,10 +15,13 @@ export function createApp() {
   app.set('trust proxy', 1)
 
   // API docs - mounted before helmet so its CSP doesn't block Swagger UI assets.
-  app.get('/api/docs.json', (_req, res) => res.json(openapiSpec))
-  app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(openapiSpec, {
-    customSiteTitle: 'HACKRICULTURE API',
-  }))
+  // Disabled when DOCS_ENABLED=false (the default in production).
+  if (env.DOCS_ENABLED) {
+    app.get('/api/docs.json', (_req, res) => res.json(openapiSpec))
+    app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(openapiSpec, {
+      customSiteTitle: 'HACKRICULTURE API',
+    }))
+  }
 
   app.use(helmet())
   app.use(cors({ origin: env.CORS_ORIGIN, credentials: true }))

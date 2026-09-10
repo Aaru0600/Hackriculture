@@ -1,14 +1,17 @@
-# HACKRICULTURE - full stack: Mongo + Python ML + Node API + React (nginx).
+# HACKRICULTURE - local dev / demo stack: Mongo + Python ML + Node API + React.
 #
 #   docker compose up --build
 #
 # Frontend:  http://localhost:8080
 # API:       http://localhost:4000/api   (Swagger UI at /api/docs)
-# ML:        http://localhost:8001
+# ML:        http://localhost:8001       (dev only - not exposed by the prod override)
 #
 # The ml-service trains any missing models from ml-service/data/raw/*.csv on
-# first start (see ml-service/docker-entrypoint.sh). Provide those CSVs or the
-# yield endpoint falls back to the agronomic layer only.
+# first start (see ml-service/docker-entrypoint.sh). The raw CSVs are committed,
+# so a clean `docker compose up --build` works out of the box (first ML start
+# takes ~1 min while it trains).
+#
+# For production use the override:  docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
 
 services:
   mongo:
@@ -24,7 +27,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./ml-service/data:/app/data
-      - ./ml-service/models:/app/models
+      - ml-models:/app/models
     ports:
       - "8001:8001"
 
@@ -40,8 +43,9 @@ services:
       MONGO_URI: mongodb://mongo:27017/hackriculture
       ML_SERVICE_URL: http://ml-service:8001
       CORS_ORIGIN: http://localhost:8080
-      JWT_SECRET: ${JWT_SECRET:-change-me-in-production}
+      JWT_SECRET: ${JWT_SECRET:-dev-only-compose-secret-change-me}
       SEED_DEMO_ADMIN: "true"
+      DOCS_ENABLED: "true"
       ASSISTANT_API_KEY: ${ASSISTANT_API_KEY:-}
     ports:
       - "4000:4000"
@@ -61,3 +65,4 @@ services:
 
 volumes:
   mongo-data:
+  ml-models:

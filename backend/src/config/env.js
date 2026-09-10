@@ -53,4 +53,8 @@ export const env = {
   SEED_DEMO_ADMIN: (process.env.SEED_DEMO_ADMIN ?? 'true') === 'true',
   DEMO_ADMIN_EMAIL: process.env.DEMO_ADMIN_EMAIL ?? 'admin@hackriculture.test',
   DEMO_ADMIN_PASSWORD: process.env.DEMO_ADMIN_PASSWORD ?? 'admin1234',
+
+  // Swagger UI at /api/docs. On by default; turn off in production
+  // (DOCS_ENABLED=false) to avoid publishing the full API surface.
+  DOCS_ENABLED: (process.env.DOCS_ENABLED ?? (NODE_ENV === 'production' ? 'false' : 'true')) === 'true',
 }
