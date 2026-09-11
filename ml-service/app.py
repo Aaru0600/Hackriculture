@@ -90,7 +90,10 @@ class YieldRequest(BaseModel):
 
     def normalised(self) -> dict:
         data = self.model_dump()
-        data["area_ha"] = data["farm_size_ha"]
+        # area_ha is a STATE-YEAR AGGREGATE the model was trained on (millions
+        # of hectares for a big state), not this one farm's size - do NOT
+        # alias it to farm_size_ha here. predict.py fills a missing area_ha
+        # from this crop+state's own recent regional figures instead.
         checks = [("crop", CROPS), ("season", SEASONS), ("state", STATES)]
         if data.get("soil_type") is not None:
             checks.append(("soil_type", SOIL_TYPES))

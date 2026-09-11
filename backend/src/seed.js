@@ -5,7 +5,15 @@ import { User } from './models/User.js'
 export async function seedDemoAdmin() {
   if (!env.SEED_DEMO_ADMIN) return
   const existing = await User.findOne({ email: env.DEMO_ADMIN_EMAIL })
-  if (existing) return
+  if (existing) {
+    // Demo accounts created before email verification existed predate the
+    // field - never leave the seeded admin stuck behind its own banner.
+    if (!existing.isEmailVerified) {
+      existing.isEmailVerified = true
+      await existing.save()
+    }
+    return
+  }
 
   const admin = new User({
     name: 'Platform Admin',
