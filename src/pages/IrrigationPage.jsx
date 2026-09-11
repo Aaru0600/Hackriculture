@@ -10,6 +10,7 @@ import { FormInput } from '@/components/ui/FormInput'
 import { SelectInput } from '@/components/ui/SelectInput'
 import { recommendIrrigation } from '@/services/recommendationService'
 import { YIELD_CROPS, SOIL_TYPES, GROWTH_STAGES } from '@/data/predictionOptions'
+import { LocationAutofill } from '@/components/prediction/LocationAutofill'
 
 const IRRIGATION_TYPES = ['canal', 'drip', 'rainfed', 'sprinkler']
 const NUM_FIELDS = {
@@ -30,10 +31,25 @@ export default function IrrigationPage() {
   const [status, setStatus] = useState('idle')
   const [result, setResult] = useState(null)
   const [err, setErr] = useState(null)
+  const [autofilled, setAutofilled] = useState(0)
 
   const set = (k) => (e) => {
     setValues((v) => ({ ...v, [k]: e.target.value }))
     setErrors((x) => ({ ...x, [k]: undefined }))
+  }
+
+  const applyAutofill = (patch) => {
+    setValues((v) => {
+      const nv = { ...v }
+      let n = 0
+      for (const k of ['temperature', 'humidity']) {
+        if (patch[k] != null) { nv[k] = String(patch[k]); n++ }
+      }
+      if (patch.soilType) { nv.soilType = patch.soilType; n++ }
+      setAutofilled(n)
+      return nv
+    })
+    setErrors({})
   }
 
   const validate = () => {
@@ -155,6 +171,10 @@ export default function IrrigationPage() {
         </div>
       ) : (
         <Card className="flex flex-col gap-4">
+          <LocationAutofill onFill={applyAutofill} />
+          {autofilled > 0 && (
+            <p className="text-xs text-muted">{t('autofill.filled', { count: autofilled })}</p>
+          )}
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             <SelectInput
               label={t('irrigation.fields.crop')} required value={values.crop} onChange={set('crop')}

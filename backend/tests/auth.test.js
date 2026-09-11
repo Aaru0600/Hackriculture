@@ -30,6 +30,53 @@ test('register creates a farmer and returns a token', async () => {
   assert.equal(res.body.data.user.passwordHash, undefined)
 })
 
+test('register with an email sends a verification link (dev mode returns devLink)', async () => {
+  const res = await request.post('/api/auth/register').send(NEW_USER)
+  assert.equal(res.status, 201)
+  assert.equal(res.body.data.user.isEmailVerified, false)
+  assert.equal(res.body.data.emailVerification.required, true)
+  assert.ok(res.body.data.emailVerification.devLink.includes('/verify-email?token='))
+})
+
+test('register by phone only needs no email verification', async () => {
+  const res = await request.post('/api/auth/register').send({
+    name: 'Phone Only', password: 'sunflower22', phone: '9990002222',
+  })
+  assert.equal(res.status, 201)
+  assert.equal(res.body.data.user.isEmailVerified, true)
+  assert.equal(res.body.data.emailVerification.required, false)
+})
+
+test('verify-email marks the account verified and rejects a bad/expired token', async () => {
+  const reg = await request.post('/api/auth/register').send(NEW_USER)
+  const link = reg.body.data.emailVerification.devLink
+  const token = new URL(link).searchParams.get('token')
+
+  const bad = await request.post('/api/auth/verify-email').send({ token: 'x'.repeat(40) })
+  assert.equal(bad.status, 400)
+
+  const good = await request.post('/api/auth/verify-email').send({ token })
+  assert.equal(good.status, 200)
+  assert.equal(good.body.data.user.isEmailVerified, true)
+  assert.ok(good.body.data.token)
+
+  const reused = await request.post('/api/auth/verify-email').send({ token })
+  assert.equal(reused.status, 400)
+})
+
+test('resend-verification issues a fresh link and never reveals unknown accounts', async () => {
+  await request.post('/api/auth/register').send(NEW_USER)
+
+  const known = await request.post('/api/auth/resend-verification').send({ email: NEW_USER.email })
+  assert.equal(known.status, 200)
+  assert.ok(known.body.data.devLink.includes('/verify-email?token='))
+
+  const unknown = await request.post('/api/auth/resend-verification').send({ email: 'nobody@example.com' })
+  assert.equal(unknown.status, 200)
+  assert.equal(unknown.body.data.sent, true)
+  assert.equal(unknown.body.data.devLink, undefined)
+})
+
 test('register rejects a weak password', async () => {
   const res = await request.post('/api/auth/register').send({ ...NEW_USER, password: 'short' })
   assert.equal(res.status, 400)

@@ -44,6 +44,14 @@ export function AuthProvider({ children }) {
     return u
   }, [])
 
+  const verifyEmail = useCallback(async (token) => {
+    const { user: u } = await authService.verifyEmail(token)
+    setUser(u)
+    setStatus('authed')
+    if (u?.preferredLanguage) i18n.changeLanguage(u.preferredLanguage)
+    return u
+  }, [])
+
   const logout = useCallback(async () => {
     await authService.logout()
     setUser(null)
@@ -64,10 +72,11 @@ export function AuthProvider({ children }) {
       isAdmin: user?.role === 'admin',
       login,
       register,
+      verifyEmail,
       logout,
       updateUser,
     }),
-    [user, status, login, register, logout, updateUser],
+    [user, status, login, register, verifyEmail, logout, updateUser],
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

@@ -85,7 +85,7 @@ export function AssistantWidget() {
         onClick={() => setOpen((o) => !o)}
         aria-label={t('assistant.title')}
         className={cn(
-          'fixed bottom-5 left-5 z-40 grid h-14 w-14 place-items-center rounded-full text-white shadow-lg transition-transform',
+          'fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full text-white shadow-lg transition-transform',
           'bg-gradient-to-br from-brand-600 to-harvest-500 hover:scale-105 active:scale-95',
         )}
       >
@@ -93,7 +93,7 @@ export function AssistantWidget() {
       </button>
 
       {open && (
-        <div className="fixed bottom-24 left-5 z-40 flex h-[32rem] max-h-[75vh] w-[22rem] max-w-[calc(100vw-2.5rem)] flex-col overflow-hidden rounded-2xl border border-line bg-surface shadow-2xl">
+        <div className="fixed bottom-24 right-5 z-40 flex h-[32rem] max-h-[75vh] w-[22rem] max-w-[calc(100vw-2.5rem)] flex-col overflow-hidden rounded-2xl border border-line bg-surface shadow-2xl">
           <div className="flex items-center gap-2 border-b border-line bg-gradient-to-r from-brand-600 to-harvest-500 px-4 py-3 text-white">
             <Sparkles size={16} />
             <span className="text-sm font-semibold">{t('assistant.title')}</span>

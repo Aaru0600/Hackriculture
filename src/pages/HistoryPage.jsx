@@ -8,8 +8,20 @@ import {
 } from 'recharts'
 import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
+import { Button } from '@/components/ui/Button'
 import { getYieldHistory, getRecommendationsHistory } from '@/services/historyService'
+import { HistoryDetail } from '@/components/history/HistoryDetail'
+import { PATHS } from '@/routes/paths'
 import { cn } from '@/lib/cn'
+
+const EMPTY_CTAS = {
+  predictions: [{ key: 'yield', to: PATHS.cropPrediction, icon: TrendingUp }],
+  recommendations: [
+    { key: 'cropRec', to: PATHS.cropRecommendation, icon: Sprout },
+    { key: 'fertilizer', to: PATHS.fertilizer, icon: FlaskConical },
+    { key: 'irrigation', to: PATHS.irrigation, icon: Droplets },
+  ],
+}
 
 const KIND_ICON = { crop: Sprout, irrigation: Droplets, fertilizer: FlaskConical }
 
@@ -103,9 +115,17 @@ export default function HistoryPage() {
       )}
 
       {status === 'done' && rows.length === 0 && (
-        <Card className="flex flex-col items-center gap-2 py-12 text-center">
+        <Card className="flex flex-col items-center gap-3 py-12 text-center">
           <HistoryIcon size={28} className="text-muted" />
           <p className="text-sm text-muted">{t('history.empty')}</p>
+          <p className="text-xs text-muted">{t('history.emptyHint')}</p>
+          <div className="mt-1 flex flex-wrap justify-center gap-2">
+            {EMPTY_CTAS[tab].map(({ key, to, icon: Icon }) => (
+              <Button key={key} to={to} variant="outline" size="sm">
+                <Icon size={14} /> {t(`history.emptyCta.${key}`)}
+              </Button>
+            ))}
+          </div>
         </Card>
       )}
 
@@ -141,9 +161,9 @@ export default function HistoryPage() {
                   />
                 </button>
                 {openId === row.id && (
-                  <pre className="max-h-72 overflow-auto border-t border-line bg-canvas p-3 text-[11px] leading-relaxed text-ink/80">
-                    {JSON.stringify(row.output ?? row, null, 2)}
-                  </pre>
+                  <div className="max-h-96 overflow-auto border-t border-line">
+                    <HistoryDetail isPred={isPred} kind={row.kind} row={row} />
+                  </div>
                 )}
               </Card>
             )

@@ -42,14 +42,16 @@ function seedIfEmpty() {
       preferredLanguage: 'en',
       farmSize: null,
       farmSizeUnit: 'acre',
+      isEmailVerified: true,
       createdAt: new Date().toISOString(),
     },
   ])
 }
 
 // Strip the credential before the user object leaves this module.
-const publicUser = ({ passwordHash: _pw, ...rest }) => rest
+const publicUser = ({ passwordHash: _pw, emailVerificationToken: _t, ...rest }) => rest
 const makeToken = (id) => `mock.${obfuscate(`${id}:${Date.now()}`)}`
+const makeVerificationToken = () => obfuscate(`${Date.now()}:${Math.random()}`).replace(/[^a-zA-Z0-9]/g, '')
 
 function persistSession(user) {
   const token = makeToken(user.id)
@@ -80,10 +82,11 @@ export async function register(payload) {
   )
   if (exists) throw new ApiError('An account with these details already exists', 409)
 
+  const email = payload.email?.trim().toLowerCase() || ''
   const user = {
     id: `u_${Date.now().toString(36)}`,
     name: payload.name.trim(),
-    email: payload.email?.trim().toLowerCase() || '',
+    email,
     phone: payload.phone?.trim() || '',
     passwordHash: obfuscate(payload.password),
     role: 'farmer',
@@ -92,10 +95,60 @@ export async function register(payload) {
     preferredLanguage: payload.preferredLanguage || 'en',
     farmSize: payload.farmSize ? Number(payload.farmSize) : null,
     farmSizeUnit: payload.farmSizeUnit || 'acre',
+    isEmailVerified: !email, // nothing to verify for a phone-only account
+    emailVerificationToken: email ? makeVerificationToken() : null,
     createdAt: new Date().toISOString(),
   }
   writeUsers([...users, user])
-  return mockResponse(persistSession(user), { message: 'Account created' }).then((r) => r.data)
+  const session = persistSession(user)
+  const emailVerification = email
+    ? { required: true, sent: false, devLink: `/verify-email?token=${user.emailVerificationToken}` }
+    : { required: false, sent: false }
+  return mockResponse({ ...session, emailVerification }, { message: 'Account created' }).then((r) => r.data)
+}
+
+/** Real mode: POST /auth/verify-email. Mock mode: matches the demo token, then signs in. */
+export async function verifyEmail(token) {
+  if (!USE_MOCKS) {
+    const body = await request('/auth/verify-email', {
+      method: 'POST',
+      auth: false,
+      body: JSON.stringify({ token }),
+    })
+    persistTokens(body.data)
+    return body.data
+  }
+
+  seedIfEmpty()
+  const users = readUsers()
+  const idx = users.findIndex((u) => u.emailVerificationToken && u.emailVerificationToken === token)
+  if (idx === -1) throw new ApiError('This verification link is invalid or has expired.', 400)
+  users[idx] = { ...users[idx], isEmailVerified: true, emailVerificationToken: null }
+  writeUsers(users)
+  return mockResponse(persistSession(users[idx]), { message: 'Email verified' }).then((r) => r.data)
+}
+
+/** Real mode: POST /auth/resend-verification. Mock mode: re-mints the demo token. */
+export async function resendVerification(email) {
+  if (!USE_MOCKS) {
+    const body = await request('/auth/resend-verification', {
+      method: 'POST',
+      auth: false,
+      body: JSON.stringify({ email }),
+    })
+    return body.data
+  }
+
+  seedIfEmpty()
+  const users = readUsers()
+  const idx = users.findIndex((u) => u.email?.toLowerCase() === email.trim().toLowerCase())
+  if (idx === -1 || users[idx].isEmailVerified) {
+    return mockResponse({ sent: true }, { message: 'If the account exists and is unverified, a new link was sent' }).then((r) => r.data)
+  }
+  users[idx] = { ...users[idx], emailVerificationToken: makeVerificationToken() }
+  writeUsers(users)
+  const devLink = `/verify-email?token=${users[idx].emailVerificationToken}`
+  return mockResponse({ sent: true, devLink }, { message: 'If the account exists and is unverified, a new link was sent' }).then((r) => r.data)
 }
 
 export async function login({ identifier, password }) {

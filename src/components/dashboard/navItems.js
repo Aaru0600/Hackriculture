@@ -1,6 +1,5 @@
 import {
   Bell,
-  Bot,
   CloudSun,
   Droplets,
   FlaskConical,
@@ -16,6 +15,8 @@ import { PATHS } from '@/routes/paths'
 /**
  * Primary navigation for the signed-in app. `labelKey` resolves to
  * dashboard.nav.<key>. Shared by the desktop sidebar and the mobile bottom nav.
+ * KrishiAI assistant is NOT listed here - it lives as the bottom-right
+ * `AssistantWidget` FAB (mounted in `DashboardLayout`), reachable from every page.
  */
 export const NAV_ITEMS = [
   { key: 'dashboard', to: PATHS.dashboard, icon: LayoutDashboard },
@@ -27,7 +28,6 @@ export const NAV_ITEMS = [
   { key: 'alerts', to: PATHS.alerts, icon: Bell },
   { key: 'myFarm', to: PATHS.myFarm, icon: Tractor },
   { key: 'history', to: PATHS.history, icon: History },
-  { key: 'aiAssistant', to: PATHS.aiAssistant, icon: Bot },
   { key: 'profile', to: PATHS.profile, icon: User },
 ]
 

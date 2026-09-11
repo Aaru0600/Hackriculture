@@ -51,6 +51,21 @@ export const env = {
   ASSISTANT_MODEL: process.env.ASSISTANT_MODEL ?? 'llama-3.1-8b-instant',
   ASSISTANT_TIMEOUT_MS: Number(process.env.ASSISTANT_TIMEOUT_MS ?? 20000),
 
+  // Email verification (real-address proof-of-ownership on register).
+  // Leave SMTP_HOST blank in dev - the link is logged to the console and
+  // returned as `devLink` in the API response instead of being emailed.
+  SMTP_HOST: process.env.SMTP_HOST ?? '',
+  SMTP_PORT: Number(process.env.SMTP_PORT ?? 587),
+  SMTP_SECURE: (process.env.SMTP_SECURE ?? 'false') === 'true',
+  SMTP_USER: process.env.SMTP_USER ?? '',
+  SMTP_PASS: process.env.SMTP_PASS ?? '',
+  EMAIL_FROM: process.env.EMAIL_FROM ?? 'HACKRICULTURE <no-reply@hackriculture.local>',
+  APP_URL: process.env.APP_URL ?? 'http://localhost:5173',
+  EMAIL_VERIFICATION_EXPIRES_MIN: Number(process.env.EMAIL_VERIFICATION_EXPIRES_MIN ?? 1440),
+  // MX-record lookup on the email's domain at registration - catches typos /
+  // domains that cannot receive mail. Off in test (no network in CI sandboxes).
+  EMAIL_VERIFY_MX: (process.env.EMAIL_VERIFY_MX ?? (isTest ? 'false' : 'true')) === 'true',
+
   SEED_DEMO_ADMIN: (process.env.SEED_DEMO_ADMIN ?? 'true') === 'true',
   DEMO_ADMIN_EMAIL: process.env.DEMO_ADMIN_EMAIL ?? 'admin@hackriculture.test',
   DEMO_ADMIN_PASSWORD: process.env.DEMO_ADMIN_PASSWORD ?? 'admin1234',

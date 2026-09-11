@@ -8,6 +8,7 @@ import { FormInput } from '@/components/ui/FormInput'
 import { SelectInput } from '@/components/ui/SelectInput'
 import { recommendFertilizer } from '@/services/fertilizerService'
 import { YIELD_CROPS, SOIL_TYPES, GROWTH_STAGES } from '@/data/predictionOptions'
+import { LocationAutofill } from '@/components/prediction/LocationAutofill'
 
 const NUM_FIELDS = {
   nitrogen: [0, 400, 'kg/ha'], phosphorus: [0, 200, 'kg/ha'],
@@ -24,10 +25,25 @@ export default function FertilizerPage() {
   const [status, setStatus] = useState('idle')
   const [result, setResult] = useState(null)
   const [err, setErr] = useState(null)
+  const [autofilled, setAutofilled] = useState(0)
 
   const set = (k) => (e) => {
     setValues((v) => ({ ...v, [k]: e.target.value }))
     setErrors((x) => ({ ...x, [k]: undefined }))
+  }
+
+  const applyAutofill = (patch) => {
+    setValues((v) => {
+      const nv = { ...v }
+      let n = 0
+      for (const k of ['soilPH', 'nitrogen']) {
+        if (patch[k] != null) { nv[k] = String(patch[k]); n++ }
+      }
+      if (patch.soilType) { nv.soilType = patch.soilType; n++ }
+      setAutofilled(n)
+      return nv
+    })
+    setErrors({})
   }
 
   const validate = () => {
@@ -137,6 +153,10 @@ export default function FertilizerPage() {
         </div>
       ) : (
         <Card className="flex flex-col gap-4">
+          <LocationAutofill onFill={applyAutofill} />
+          {autofilled > 0 && (
+            <p className="text-xs text-muted">{t('autofill.filled', { count: autofilled })}</p>
+          )}
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             <SelectInput
               label={t('fertilizer.fields.crop')} required value={values.crop} onChange={set('crop')}

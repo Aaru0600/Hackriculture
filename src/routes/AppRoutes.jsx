@@ -22,6 +22,7 @@ const PlaceholderPage = lazy(() => import('@/pages/PlaceholderPage'))
 const LoginPage = lazy(() => import('@/pages/auth/LoginPage'))
 const RegisterPage = lazy(() => import('@/pages/auth/RegisterPage'))
 const ForgotPasswordPage = lazy(() => import('@/pages/auth/ForgotPasswordPage'))
+const VerifyEmailPage = lazy(() => import('@/pages/auth/VerifyEmailPage'))
 
 const AdminDashboardPage = lazy(() => import('@/pages/admin/AdminDashboardPage'))
 const AdminUsersPage = lazy(() => import('@/pages/admin/AdminUsersPage'))
@@ -45,6 +46,7 @@ export function AppRoutes() {
       <Route path={PATHS.login} element={<LoginPage />} />
       <Route path={PATHS.register} element={<RegisterPage />} />
       <Route path={PATHS.forgotPassword} element={<ForgotPasswordPage />} />
+      <Route path={PATHS.verifyEmail} element={<VerifyEmailPage />} />
       <Route path="/learn/:slug" element={<LearnPage />} />
 
       {/* Signed-in app - inside the dashboard shell */}

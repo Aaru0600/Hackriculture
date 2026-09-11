@@ -5,6 +5,7 @@ import { validate } from '../middleware/validate.js'
 import { authenticate } from '../middleware/auth.js'
 import {
   registerSchema, loginSchema, profileSchema, forgotPasswordSchema, changePasswordSchema,
+  verifyEmailSchema, resendVerificationSchema,
 } from '../validators/authValidator.js'
 import * as auth from '../controllers/authController.js'
 
@@ -25,6 +26,8 @@ router.post('/register', authLimiter, validate(registerSchema), auth.register)
 router.post('/login', authLimiter, validate(loginSchema), auth.login)
 router.post('/logout', auth.logout)
 router.post('/forgot-password', authLimiter, validate(forgotPasswordSchema), auth.forgotPassword)
+router.post('/verify-email', authLimiter, validate(verifyEmailSchema), auth.verifyEmail)
+router.post('/resend-verification', authLimiter, validate(resendVerificationSchema), auth.resendVerification)
 
 router.get('/me', authenticate, auth.me)
 router.put('/profile', authenticate, validate(profileSchema), auth.updateProfile)

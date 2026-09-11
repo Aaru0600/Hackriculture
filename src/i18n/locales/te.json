@@ -102,6 +102,24 @@
       "backToLogin": "సైన్ ఇన్‌కు తిరిగి వెళ్లు",
       "sentTitle": "మీ ఇన్‌బాక్స్‌ను తనిఖీ చేయండి",
       "sentBody": "ఈ వివరాలకు ఖాతా సరిపోలితే, పాస్‌వర్డ్ రీసెట్ లింక్ పంపబడుతోంది."
+    },
+    "verifyEmail": {
+      "title": "Verify your email",
+      "subtitle": "Confirming this is really you.",
+      "verifying": "Checking your link...",
+      "doneTitle": "Email verified",
+      "doneBody": "Thanks - your email is confirmed. You are signed in.",
+      "goToDashboard": "Go to dashboard",
+      "errorTitle": "Link invalid or expired",
+      "errorBody": "This verification link no longer works. Sign in and use \"Resend link\" to get a new one.",
+      "backToLogin": "Back to sign in"
+    },
+    "verifyBanner": {
+      "message": "Please verify {{email}} to confirm it is really yours.",
+      "resend": "Resend link",
+      "sent": "Link sent - check your inbox.",
+      "devLink": "Verify now (demo link)",
+      "error": "Could not send the link. Try again shortly."
     }
   },
   "hero": {
@@ -660,6 +678,17 @@
       "crop": "Crop recommendation",
       "irrigation": "Irrigation plan",
       "fertilizer": "Fertiliser plan"
+    },
+    "emptyHint": "Use the tools below to generate your first record.",
+    "emptyCta": {
+      "yield": "Predict crop yield",
+      "cropRec": "Get crop recommendation",
+      "fertilizer": "Get fertiliser plan",
+      "irrigation": "Get irrigation plan"
+    },
+    "detail": {
+      "range": "Likely range",
+      "production": "Expected production"
     }
   },
   "learn": {

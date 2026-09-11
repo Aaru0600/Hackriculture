@@ -7,6 +7,7 @@ export const PATHS = {
   login: '/login',
   register: '/register',
   forgotPassword: '/forgot-password',
+  verifyEmail: '/verify-email',
 
   dashboard: '/dashboard',
   cropPrediction: '/crop-prediction',

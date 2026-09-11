@@ -14,6 +14,7 @@ export async function seedDemoAdmin() {
     state: 'Delhi',
     district: 'New Delhi',
     preferredLanguage: 'en',
+    isEmailVerified: true,
   })
   await admin.setPassword(env.DEMO_ADMIN_PASSWORD)
   await admin.save()

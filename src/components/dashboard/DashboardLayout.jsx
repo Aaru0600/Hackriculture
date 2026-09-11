@@ -5,6 +5,7 @@ import { NAV_ITEMS } from './navItems'
 import { DashboardSidebar } from './DashboardSidebar'
 import { DashboardTopbar } from './DashboardTopbar'
 import { MobileBottomNav } from './MobileBottomNav'
+import { EmailVerifyBanner } from './EmailVerifyBanner'
 import { AssistantWidget } from '@/components/assistant/AssistantWidget'
 
 /**
@@ -27,6 +28,7 @@ export function DashboardLayout() {
 
       <div className="lg:pl-72">
         <DashboardTopbar title={title} onMenu={() => setMenuOpen(true)} />
+        <EmailVerifyBanner />
         <main className="mx-auto max-w-6xl px-4 pb-24 pt-6 sm:px-6 lg:px-8 lg:pb-10">
           <Outlet />
         </main>
