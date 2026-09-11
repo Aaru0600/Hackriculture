@@ -20,6 +20,35 @@ const SOILGRIDS_URL =
 
 const PROPERTIES = ['phh2o', 'nitrogen', 'soc', 'sand', 'silt', 'clay']
 
+// SoilGrids is rate-limited and often slow/5xx. A point's soil barely changes
+// hour to hour, so cache successful lookups (~0.01deg ~ 1.1km buckets) and
+// give a slow-but-alive response a real chance with a longer timeout + retry
+// before falling back to the labelled sample.
+const SOIL_CACHE_KEY = 'hk_soil_cache'
+const SOIL_CACHE_TTL_MS = 6 * 60 * 60 * 1000
+const SOIL_TIMEOUT_MS = 15000
+
+function cacheKey(latitude, longitude) {
+  return `${Math.round(latitude * 100) / 100},${Math.round(longitude * 100) / 100}`
+}
+
+function readCache(key) {
+  try {
+    const all = JSON.parse(localStorage.getItem(SOIL_CACHE_KEY) || '{}')
+    const entry = all[key]
+    if (entry && Date.now() - entry.at < SOIL_CACHE_TTL_MS) return entry.value
+  } catch { /* noop */ }
+  return null
+}
+
+function writeCache(key, value) {
+  try {
+    const all = JSON.parse(localStorage.getItem(SOIL_CACHE_KEY) || '{}')
+    all[key] = { at: Date.now(), value }
+    localStorage.setItem(SOIL_CACHE_KEY, JSON.stringify(all))
+  } catch { /* noop */ }
+}
+
 /** Simplified USDA texture triangle -> our soilType i18n keys. */
 export function classifyTexture(sand, silt, clay) {
   if ([sand, silt, clay].some((v) => v == null || Number.isNaN(v))) return 'unknown'
@@ -75,22 +104,32 @@ export async function getSoilEstimate(location) {
       return { ...body.data, location }
     }
 
+    const key = cacheKey(latitude, longitude)
+    const cached = readCache(key)
+    if (cached) return { ...cached, location }
+
     const query =
       `?lat=${latitude}&lon=${longitude}&depth=0-5cm&value=mean&` +
       PROPERTIES.map((p) => `property=${p}`).join('&')
 
-    // SoilGrids is rate-limited and frequently returns transient 5xx. Keep the
-    // wait short - one quick retry only - then let the caller fall back to a
-    // labelled estimate rather than leave the farmer staring at a spinner.
-    let res = await fetchWithTimeout(`${SOILGRIDS_URL}${query}`, {
-      headers: { Accept: 'application/json' },
-      timeout: 8000,
-    })
-    if (!res.ok && res.status >= 500) {
-      await new Promise((r) => setTimeout(r, 800))
+    // SoilGrids is rate-limited and frequently returns transient 5xx/timeouts.
+    // Give it a genuinely long timeout and one retry before the caller falls
+    // back to a labelled estimate rather than leave the farmer staring at a
+    // spinner indefinitely.
+    let res
+    try {
       res = await fetchWithTimeout(`${SOILGRIDS_URL}${query}`, {
         headers: { Accept: 'application/json' },
-        timeout: 8000,
+        timeout: SOIL_TIMEOUT_MS,
+      })
+    } catch {
+      res = null
+    }
+    if (!res || !res.ok) {
+      await new Promise((r) => setTimeout(r, 1000))
+      res = await fetchWithTimeout(`${SOILGRIDS_URL}${query}`, {
+        headers: { Accept: 'application/json' },
+        timeout: SOIL_TIMEOUT_MS,
       })
     }
     if (!res.ok) throw new ApiError(`Soil provider error (${res.status})`, res.status)
@@ -116,8 +155,7 @@ export async function getSoilEstimate(location) {
       throw new ApiError('SoilGrids returned no usable values', 502)
     }
 
-    return {
-      location,
+    const estimate = {
       soilPH: ph == null ? null : Math.round(ph * 10) / 10,
       totalNitrogen: nitrogen == null ? null : Math.round(nitrogen * 100) / 100,
       nitrogenLevelKey: nitrogenLevel(nitrogen),
@@ -128,6 +166,8 @@ export async function getSoilEstimate(location) {
       provider: 'SoilGrids (ISRIC)',
       isMock: false,
     }
+    writeCache(key, estimate)
+    return { location, ...estimate }
   } catch (err) {
     if (import.meta.env.DEV) console.warn('[soilService] falling back to mock:', err)
     return mockSoilEstimate(location)

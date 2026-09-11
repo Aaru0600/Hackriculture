@@ -213,40 +213,71 @@ function sampleSoil() {
   }
 }
 
-export async function soilEstimate(lat, lon) {
-  try {
-    const { data } = await http.get(SOILGRIDS_URL, {
-      params: { lat, lon, depth: '0-5cm', value: 'mean' },
-      paramsSerializer: (p) =>
-        [...Object.entries(p).map(([k, v]) => `${k}=${v}`), ...SOIL_PROPS.map((x) => `property=${x}`)].join('&'),
-      headers: { Accept: 'application/json' },
-    })
-    const layers = data.properties?.layers ?? []
-    const ph = readMean(layers, 'phh2o')
-    const nitrogen = readMean(layers, 'nitrogen')
-    const soc = readMean(layers, 'soc')
-    const sand = readMean(layers, 'sand')
-    const silt = readMean(layers, 'silt')
-    const clay = readMean(layers, 'clay')
-    if (ph == null && nitrogen == null && soc == null && sand == null) return sampleSoil()
+// SoilGrids is rate-limited and often slow/5xx. A point's soil barely changes
+// hour to hour, so a short in-memory cache (~0.01deg ~ 1.1km buckets) turns
+// repeat lookups for the same field into instant hits instead of re-rolling
+// the flaky provider every time, and a longer per-call timeout + one retry
+// gives a slow-but-alive response a real chance before falling back to the
+// labelled sample.
+const SOIL_CACHE_TTL_MS = 6 * 60 * 60 * 1000
+const SOIL_TIMEOUT_MS = 15000
+const soilCache = new Map()
 
-    const texture = {
-      sand: sand == null ? null : round(sand),
-      silt: silt == null ? null : round(silt),
-      clay: clay == null ? null : round(clay),
-    }
-    return {
-      soilPH: ph == null ? null : round(ph, 1),
-      totalNitrogen: nitrogen == null ? null : round(nitrogen, 2),
-      nitrogenLevelKey: nitrogenLevel(nitrogen),
-      organicCarbon: soc == null ? null : round(soc / 10, 2),
-      texture,
-      soilTypeKey: classifyTexture(texture.sand, texture.silt, texture.clay),
-      depth: '0-5cm',
-      provider: 'SoilGrids (ISRIC)',
-      isMock: false,
-    }
-  } catch {
-    return sampleSoil()
+function soilCacheKey(lat, lon) {
+  return `${Math.round(lat * 100) / 100},${Math.round(lon * 100) / 100}`
+}
+
+async function fetchSoilGrids(lat, lon) {
+  const { data } = await http.get(SOILGRIDS_URL, {
+    params: { lat, lon, depth: '0-5cm', value: 'mean' },
+    paramsSerializer: (p) =>
+      [...Object.entries(p).map(([k, v]) => `${k}=${v}`), ...SOIL_PROPS.map((x) => `property=${x}`)].join('&'),
+    headers: { Accept: 'application/json' },
+    timeout: SOIL_TIMEOUT_MS,
+  })
+  const layers = data.properties?.layers ?? []
+  const ph = readMean(layers, 'phh2o')
+  const nitrogen = readMean(layers, 'nitrogen')
+  const soc = readMean(layers, 'soc')
+  const sand = readMean(layers, 'sand')
+  const silt = readMean(layers, 'silt')
+  const clay = readMean(layers, 'clay')
+  if (ph == null && nitrogen == null && soc == null && sand == null) return null
+
+  const texture = {
+    sand: sand == null ? null : round(sand),
+    silt: silt == null ? null : round(silt),
+    clay: clay == null ? null : round(clay),
   }
+  return {
+    soilPH: ph == null ? null : round(ph, 1),
+    totalNitrogen: nitrogen == null ? null : round(nitrogen, 2),
+    nitrogenLevelKey: nitrogenLevel(nitrogen),
+    organicCarbon: soc == null ? null : round(soc / 10, 2),
+    texture,
+    soilTypeKey: classifyTexture(texture.sand, texture.silt, texture.clay),
+    depth: '0-5cm',
+    provider: 'SoilGrids (ISRIC)',
+    isMock: false,
+  }
+}
+
+export async function soilEstimate(lat, lon) {
+  const key = soilCacheKey(lat, lon)
+  const cached = soilCache.get(key)
+  if (cached && Date.now() - cached.at < SOIL_CACHE_TTL_MS) return cached.value
+
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const result = await fetchSoilGrids(lat, lon)
+      if (result) {
+        soilCache.set(key, { at: Date.now(), value: result })
+        return result
+      }
+      break // provider responded but had no usable values - no point retrying
+    } catch {
+      if (attempt === 0) await new Promise((r) => setTimeout(r, 1000))
+    }
+  }
+  return sampleSoil()
 }
