@@ -37,7 +37,6 @@ export function AuthLayout({ title, subtitle, children, footer }) {
             ))}
           </ul>
         </div>
-        <p className="relative text-xs text-white/60">{t('footer.disclaimer')}</p>
       </aside>
 
       {/* Form pane */}

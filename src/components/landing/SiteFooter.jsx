@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import { Info } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { Logo } from '@/components/ui/Logo'
 import { PATHS } from '@/routes/paths'
@@ -68,12 +67,7 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="mt-10 flex items-start gap-2 rounded-2xl bg-harvest-50 p-4 text-sm text-earth-800">
-          <Info className="mt-0.5 h-4 w-4 shrink-0 text-harvest-600" />
-          <p>{t('footer.disclaimer')}</p>
-        </div>
-
-        <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t border-line pt-6 text-xs text-muted sm:flex-row">
+        <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t border-line pt-6 text-xs text-muted sm:flex-row">
           <p>
             &copy; {new Date().getFullYear()} HACKRICULTURE. {t('footer.rights')}
           </p>

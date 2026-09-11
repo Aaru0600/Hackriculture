@@ -143,13 +143,34 @@ def main() -> None:
     importance = _grouped_importance(pipe, X_te.iloc[:3000], yl_te.iloc[:3000])
     print(f"[train] permutation importance: {importance}")
 
-    # Serve-time fallbacks for inputs the caller omits.
+    # Serve-time fallbacks for inputs the caller omits. `area_ha`,
+    # `fertilizer_per_ha`, `annual_rainfall_mm` and `pesticide_per_ha` are
+    # STATE-YEAR AGGREGATES (e.g. area_ha=3.5M for Punjab wheat), not a single
+    # farm's size - a GLOBAL median across every crop/state badly
+    # mismatches the scale the model actually learned from (a few thousand ha
+    # of global median area for what should be a multi-million-ha wheat
+    # state), which was silently under-predicting yield for exactly the big,
+    # high-input states/crops. Regional defaults are keyed by crop+state,
+    # taken from each pair's most recent year, falling back to crop-only
+    # then global at serve time.
     defaults = {c: round(float(df[c].median()), 3) for c in REAL_NUMERIC}
     defaults["crop_year"] = int(df["crop_year"].max())
     for c in REAL_CATEGORICAL:
         defaults[c] = df[c].mode().iloc[0]
     per_crop_yield = {c: round(float(g[TARGET].median()), 3)
                       for c, g in df.groupby("crop")}
+
+    def _latest_row_defaults(group: pd.DataFrame) -> dict[str, float]:
+        latest = group.sort_values("crop_year").iloc[-1]
+        return {c: round(float(latest[c]), 3) for c in REAL_NUMERIC if c != "crop_year"}
+
+    regional_defaults_by_crop = {
+        crop: _latest_row_defaults(g) for crop, g in df.groupby("crop")
+    }
+    regional_defaults_by_crop_state = {
+        f"{crop}|{state}": _latest_row_defaults(g)
+        for (crop, state), g in df.groupby(["crop", "state"])
+    }
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
     dump(pipe, args.out)
@@ -180,6 +201,8 @@ def main() -> None:
         },
         "feature_importance": importance,
         "feature_defaults": defaults,
+        "regional_feature_defaults_by_crop_state": regional_defaults_by_crop_state,
+        "regional_feature_defaults_by_crop": regional_defaults_by_crop,
         "per_crop_median_yield_t_ha": per_crop_yield,
         "versions": {
             "python": platform.python_version(),

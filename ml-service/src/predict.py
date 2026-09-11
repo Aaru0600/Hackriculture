@@ -77,13 +77,36 @@ def _defaults() -> dict:
     })
 
 
+def _regional_default(feature: str, crop: str, state: str | None) -> float | None:
+    """
+    `area_ha`, `annual_rainfall_mm`, `fertilizer_per_ha` and `pesticide_per_ha`
+    are STATE-YEAR AGGREGATES the model was trained on (e.g. area_ha in the
+    millions for a major wheat state) - nothing like an individual farmer's
+    plot size, and a single global median mixes tiny and huge states/crops.
+    Prefer this crop+state's own most recent figures, then the crop's, before
+    falling back to the global default.
+    """
+    card = _card()
+    if state:
+        by_crop_state = card.get("regional_feature_defaults_by_crop_state", {})
+        row = by_crop_state.get(f"{crop}|{state}")
+        if row and feature in row:
+            return row[feature]
+    by_crop = card.get("regional_feature_defaults_by_crop", {})
+    row = by_crop.get(crop)
+    if row and feature in row:
+        return row[feature]
+    return None
+
+
 def _real_row(payload: dict) -> pd.DataFrame:
     d = _defaults()
+    crop, state = payload.get("crop"), payload.get("state")
     row = {}
     for c in REAL_FEATURE_ORDER:
         v = payload.get(c)
-        if v is None and c == "area_ha":
-            v = payload.get("farm_size_ha")
+        if v is None and c != "crop_year":
+            v = _regional_default(c, crop, state)
         row[c] = d.get(c) if v is None else v
     return pd.DataFrame([row])[REAL_FEATURE_ORDER]
 

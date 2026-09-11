@@ -70,6 +70,1306 @@
     "state": "karnataka",
     "season": "kharif"
   },
+  "regional_feature_defaults_by_crop_state": {
+    "cotton|andhra pradesh": {
+      "area_ha": 653953.0,
+      "annual_rainfall_mm": 899.2,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "cotton|assam": {
+      "area_ha": 789.0,
+      "annual_rainfall_mm": 2084.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "cotton|chhattisgarh": {
+      "area_ha": 59.0,
+      "annual_rainfall_mm": 1274.7,
+      "fertilizer_per_ha": 150.96,
+      "pesticide_per_ha": 0.33
+    },
+    "cotton|delhi": {
+      "area_ha": 1.0,
+      "annual_rainfall_mm": 593.6,
+      "fertilizer_per_ha": 94.67,
+      "pesticide_per_ha": 0.25
+    },
+    "cotton|gujarat": {
+      "area_ha": 1634800.0,
+      "annual_rainfall_mm": 458.4,
+      "fertilizer_per_ha": 94.67,
+      "pesticide_per_ha": 0.25
+    },
+    "cotton|haryana": {
+      "area_ha": 583779.0,
+      "annual_rainfall_mm": 516.9,
+      "fertilizer_per_ha": 119.92,
+      "pesticide_per_ha": 0.21
+    },
+    "cotton|himachal pradesh": {
+      "area_ha": 15.0,
+      "annual_rainfall_mm": 1217.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "cotton|jammu and kashmir": {
+      "area_ha": 5.0,
+      "annual_rainfall_mm": 1279.1,
+      "fertilizer_per_ha": 157.44,
+      "pesticide_per_ha": 0.38
+    },
+    "cotton|karnataka": {
+      "area_ha": 14393.0,
+      "annual_rainfall_mm": 1422.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "cotton|kerala": {
+      "area_ha": 80.0,
+      "annual_rainfall_mm": 2924.3,
+      "fertilizer_per_ha": 153.25,
+      "pesticide_per_ha": 0.35
+    },
+    "cotton|madhya pradesh": {
+      "area_ha": 650305.0,
+      "annual_rainfall_mm": 1446.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "cotton|maharashtra": {
+      "area_ha": 4207200.0,
+      "annual_rainfall_mm": 875.7,
+      "fertilizer_per_ha": 157.91,
+      "pesticide_per_ha": 0.33
+    },
+    "cotton|manipur": {
+      "area_ha": 210.0,
+      "annual_rainfall_mm": 1435.7,
+      "fertilizer_per_ha": 133.4,
+      "pesticide_per_ha": 0.16
+    },
+    "cotton|meghalaya": {
+      "area_ha": 7245.0,
+      "annual_rainfall_mm": 3844.4,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "cotton|mizoram": {
+      "area_ha": 23.0,
+      "annual_rainfall_mm": 2178.5,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "cotton|nagaland": {
+      "area_ha": 5.7,
+      "annual_rainfall_mm": 1593.0,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "cotton|odisha": {
+      "area_ha": 38120.0,
+      "annual_rainfall_mm": 1484.3,
+      "fertilizer_per_ha": 106.13,
+      "pesticide_per_ha": 0.27
+    },
+    "cotton|puducherry": {
+      "area_ha": 154.0,
+      "annual_rainfall_mm": 1582.4,
+      "fertilizer_per_ha": 157.44,
+      "pesticide_per_ha": 0.38
+    },
+    "cotton|punjab": {
+      "area_ha": 339000.0,
+      "annual_rainfall_mm": 512.6,
+      "fertilizer_per_ha": 157.91,
+      "pesticide_per_ha": 0.33
+    },
+    "cotton|tamil nadu": {
+      "area_ha": 93679.0,
+      "annual_rainfall_mm": 912.4,
+      "fertilizer_per_ha": 153.25,
+      "pesticide_per_ha": 0.35
+    },
+    "cotton|tripura": {
+      "area_ha": 760.0,
+      "annual_rainfall_mm": 2252.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "cotton|uttar pradesh": {
+      "area_ha": 5699.0,
+      "annual_rainfall_mm": 792.8,
+      "fertilizer_per_ha": 162.2,
+      "pesticide_per_ha": 0.35
+    },
+    "cotton|west bengal": {
+      "area_ha": 305.0,
+      "annual_rainfall_mm": 1733.4,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|andhra pradesh": {
+      "area_ha": 93389.0,
+      "annual_rainfall_mm": 899.2,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|arunachal pradesh": {
+      "area_ha": 923.0,
+      "annual_rainfall_mm": 2433.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|bihar": {
+      "area_ha": 841.0,
+      "annual_rainfall_mm": 1194.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|chhattisgarh": {
+      "area_ha": 22102.0,
+      "annual_rainfall_mm": 1420.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|goa": {
+      "area_ha": 2.0,
+      "annual_rainfall_mm": 4489.5,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|gujarat": {
+      "area_ha": 59423.0,
+      "annual_rainfall_mm": 1067.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|haryana": {
+      "area_ha": 2725.0,
+      "annual_rainfall_mm": 351.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|himachal pradesh": {
+      "area_ha": 44.0,
+      "annual_rainfall_mm": 1217.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|jammu and kashmir": {
+      "area_ha": 4.0,
+      "annual_rainfall_mm": 1116.7,
+      "fertilizer_per_ha": 150.8,
+      "pesticide_per_ha": 0.31
+    },
+    "groundnut|jharkhand": {
+      "area_ha": 26088.0,
+      "annual_rainfall_mm": 1137.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|karnataka": {
+      "area_ha": 113518.0,
+      "annual_rainfall_mm": 1422.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|kerala": {
+      "area_ha": 117.0,
+      "annual_rainfall_mm": 3119.2,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|madhya pradesh": {
+      "area_ha": 4089.0,
+      "annual_rainfall_mm": 1446.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|maharashtra": {
+      "area_ha": 69662.0,
+      "annual_rainfall_mm": 1555.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|manipur": {
+      "area_ha": 3216.0,
+      "annual_rainfall_mm": 1196.9,
+      "fertilizer_per_ha": 162.2,
+      "pesticide_per_ha": 0.35
+    },
+    "groundnut|mizoram": {
+      "area_ha": 10.0,
+      "annual_rainfall_mm": 2075.4,
+      "fertilizer_per_ha": 119.92,
+      "pesticide_per_ha": 0.21
+    },
+    "groundnut|nagaland": {
+      "area_ha": 1050.0,
+      "annual_rainfall_mm": 1593.0,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|odisha": {
+      "area_ha": 1422.0,
+      "annual_rainfall_mm": 1593.9,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|puducherry": {
+      "area_ha": 1.0,
+      "annual_rainfall_mm": 1317.0,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|punjab": {
+      "area_ha": 1400.0,
+      "annual_rainfall_mm": 653.2,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|tamil nadu": {
+      "area_ha": 209159.0,
+      "annual_rainfall_mm": 910.1,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|telangana": {
+      "area_ha": 98576.0,
+      "annual_rainfall_mm": 1031.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|tripura": {
+      "area_ha": 1160.0,
+      "annual_rainfall_mm": 2252.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|uttar pradesh": {
+      "area_ha": 93822.0,
+      "annual_rainfall_mm": 814.5,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|uttarakhand": {
+      "area_ha": 617.0,
+      "annual_rainfall_mm": 1313.948,
+      "fertilizer_per_ha": 193.61,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut|west bengal": {
+      "area_ha": 62233.0,
+      "annual_rainfall_mm": 1733.4,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|andhra pradesh": {
+      "area_ha": 205100.0,
+      "annual_rainfall_mm": 899.2,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|arunachal pradesh": {
+      "area_ha": 51100.0,
+      "annual_rainfall_mm": 2433.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|assam": {
+      "area_ha": 36636.0,
+      "annual_rainfall_mm": 2084.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|bihar": {
+      "area_ha": 162563.0,
+      "annual_rainfall_mm": 1194.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|chhattisgarh": {
+      "area_ha": 130433.0,
+      "annual_rainfall_mm": 1420.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|delhi": {
+      "area_ha": 20.0,
+      "annual_rainfall_mm": 546.9,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|gujarat": {
+      "area_ha": 5516.0,
+      "annual_rainfall_mm": 1067.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|haryana": {
+      "area_ha": 6050.0,
+      "annual_rainfall_mm": 351.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|himachal pradesh": {
+      "area_ha": 287444.0,
+      "annual_rainfall_mm": 1217.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|jammu and kashmir": {
+      "area_ha": 268669.0,
+      "annual_rainfall_mm": 1324.1,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|jharkhand": {
+      "area_ha": 7644.0,
+      "annual_rainfall_mm": 1137.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|karnataka": {
+      "area_ha": 31000.0,
+      "annual_rainfall_mm": 1422.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|kerala": {
+      "area_ha": 113.0,
+      "annual_rainfall_mm": 3119.2,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|madhya pradesh": {
+      "area_ha": 20995.0,
+      "annual_rainfall_mm": 1446.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|maharashtra": {
+      "area_ha": 56994.0,
+      "annual_rainfall_mm": 1555.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|manipur": {
+      "area_ha": 19160.0,
+      "annual_rainfall_mm": 1196.9,
+      "fertilizer_per_ha": 162.2,
+      "pesticide_per_ha": 0.35
+    },
+    "maize|meghalaya": {
+      "area_ha": 18174.0,
+      "annual_rainfall_mm": 3844.4,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|mizoram": {
+      "area_ha": 493.0,
+      "annual_rainfall_mm": 2178.5,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|nagaland": {
+      "area_ha": 63740.0,
+      "annual_rainfall_mm": 1593.0,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|odisha": {
+      "area_ha": 3934.0,
+      "annual_rainfall_mm": 1593.9,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|punjab": {
+      "area_ha": 114600.0,
+      "annual_rainfall_mm": 653.2,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|sikkim": {
+      "area_ha": 38387.0,
+      "annual_rainfall_mm": 2740.0,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|tamil nadu": {
+      "area_ha": 168587.0,
+      "annual_rainfall_mm": 910.1,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|telangana": {
+      "area_ha": 252561.0,
+      "annual_rainfall_mm": 1031.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|tripura": {
+      "area_ha": 12485.0,
+      "annual_rainfall_mm": 2252.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|uttar pradesh": {
+      "area_ha": 14992.0,
+      "annual_rainfall_mm": 814.5,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|uttarakhand": {
+      "area_ha": 198.0,
+      "annual_rainfall_mm": 1313.948,
+      "fertilizer_per_ha": 193.61,
+      "pesticide_per_ha": 0.37
+    },
+    "maize|west bengal": {
+      "area_ha": 140811.0,
+      "annual_rainfall_mm": 1733.4,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|andhra pradesh": {
+      "area_ha": 1050.0,
+      "annual_rainfall_mm": 899.2,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|arunachal pradesh": {
+      "area_ha": 6200.0,
+      "annual_rainfall_mm": 2433.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|assam": {
+      "area_ha": 104750.0,
+      "annual_rainfall_mm": 2084.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|bihar": {
+      "area_ha": 74181.0,
+      "annual_rainfall_mm": 1194.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|chhattisgarh": {
+      "area_ha": 8937.0,
+      "annual_rainfall_mm": 1420.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|delhi": {
+      "area_ha": 436.0,
+      "annual_rainfall_mm": 416.4,
+      "fertilizer_per_ha": 150.96,
+      "pesticide_per_ha": 0.33
+    },
+    "potato|gujarat": {
+      "area_ha": 118353.0,
+      "annual_rainfall_mm": 1067.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|haryana": {
+      "area_ha": 38200.0,
+      "annual_rainfall_mm": 351.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|himachal pradesh": {
+      "area_ha": 2970.0,
+      "annual_rainfall_mm": 1217.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|jammu and kashmir": {
+      "area_ha": 1451.0,
+      "annual_rainfall_mm": 1324.1,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|jharkhand": {
+      "area_ha": 20926.0,
+      "annual_rainfall_mm": 1296.3,
+      "fertilizer_per_ha": 153.25,
+      "pesticide_per_ha": 0.35
+    },
+    "potato|karnataka": {
+      "area_ha": 4477.0,
+      "annual_rainfall_mm": 1422.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|kerala": {
+      "area_ha": 490.0,
+      "annual_rainfall_mm": 3119.2,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|madhya pradesh": {
+      "area_ha": 149435.36,
+      "annual_rainfall_mm": 1446.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|manipur": {
+      "area_ha": 15550.0,
+      "annual_rainfall_mm": 1196.9,
+      "fertilizer_per_ha": 162.2,
+      "pesticide_per_ha": 0.35
+    },
+    "potato|meghalaya": {
+      "area_ha": 6366.0,
+      "annual_rainfall_mm": 3844.4,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|mizoram": {
+      "area_ha": 91.0,
+      "annual_rainfall_mm": 2178.5,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|nagaland": {
+      "area_ha": 7540.0,
+      "annual_rainfall_mm": 1593.0,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|odisha": {
+      "area_ha": 4397.0,
+      "annual_rainfall_mm": 1593.9,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|sikkim": {
+      "area_ha": 7470.0,
+      "annual_rainfall_mm": 2838.1,
+      "fertilizer_per_ha": 98.98,
+      "pesticide_per_ha": 0.24
+    },
+    "potato|tamil nadu": {
+      "area_ha": 2900.0,
+      "annual_rainfall_mm": 910.1,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|telangana": {
+      "area_ha": 994.0,
+      "annual_rainfall_mm": 1031.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|tripura": {
+      "area_ha": 5665.0,
+      "annual_rainfall_mm": 2487.9,
+      "fertilizer_per_ha": 98.98,
+      "pesticide_per_ha": 0.24
+    },
+    "potato|uttar pradesh": {
+      "area_ha": 552382.0,
+      "annual_rainfall_mm": 814.5,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|uttarakhand": {
+      "area_ha": 5427.0,
+      "annual_rainfall_mm": 1313.948,
+      "fertilizer_per_ha": 193.61,
+      "pesticide_per_ha": 0.37
+    },
+    "potato|west bengal": {
+      "area_ha": 1630.0,
+      "annual_rainfall_mm": 1733.4,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|andhra pradesh": {
+      "area_ha": 829557.0,
+      "annual_rainfall_mm": 899.2,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|arunachal pradesh": {
+      "area_ha": 133500.0,
+      "annual_rainfall_mm": 2433.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|assam": {
+      "area_ha": 395518.0,
+      "annual_rainfall_mm": 2084.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|bihar": {
+      "area_ha": 2593026.0,
+      "annual_rainfall_mm": 1194.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|chhattisgarh": {
+      "area_ha": 4266022.0,
+      "annual_rainfall_mm": 1420.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|delhi": {
+      "area_ha": 5848.0,
+      "annual_rainfall_mm": 546.9,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|goa": {
+      "area_ha": 24411.0,
+      "annual_rainfall_mm": 4489.5,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|gujarat": {
+      "area_ha": 54751.0,
+      "annual_rainfall_mm": 1067.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|haryana": {
+      "area_ha": 1558900.0,
+      "annual_rainfall_mm": 351.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|himachal pradesh": {
+      "area_ha": 72620.0,
+      "annual_rainfall_mm": 1217.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|jammu and kashmir": {
+      "area_ha": 280513.0,
+      "annual_rainfall_mm": 1324.1,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|jharkhand": {
+      "area_ha": 1357726.0,
+      "annual_rainfall_mm": 1137.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|karnataka": {
+      "area_ha": 272701.0,
+      "annual_rainfall_mm": 1422.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|kerala": {
+      "area_ha": 81279.0,
+      "annual_rainfall_mm": 3119.2,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|madhya pradesh": {
+      "area_ha": 34311.0,
+      "annual_rainfall_mm": 1446.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|maharashtra": {
+      "area_ha": 74896.0,
+      "annual_rainfall_mm": 1555.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|manipur": {
+      "area_ha": 233500.0,
+      "annual_rainfall_mm": 1196.9,
+      "fertilizer_per_ha": 162.2,
+      "pesticide_per_ha": 0.35
+    },
+    "rice|meghalaya": {
+      "area_ha": 63889.0,
+      "annual_rainfall_mm": 3844.4,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|mizoram": {
+      "area_ha": 468.0,
+      "annual_rainfall_mm": 2178.5,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|nagaland": {
+      "area_ha": 211280.0,
+      "annual_rainfall_mm": 1593.0,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|odisha": {
+      "area_ha": 292610.0,
+      "annual_rainfall_mm": 1593.9,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|puducherry": {
+      "area_ha": 4323.0,
+      "annual_rainfall_mm": 1317.0,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|punjab": {
+      "area_ha": 3142000.0,
+      "annual_rainfall_mm": 653.2,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|sikkim": {
+      "area_ha": 8685.0,
+      "annual_rainfall_mm": 2740.0,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|tamil nadu": {
+      "area_ha": 1360882.0,
+      "annual_rainfall_mm": 910.1,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|telangana": {
+      "area_ha": 1585062.0,
+      "annual_rainfall_mm": 1031.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|tripura": {
+      "area_ha": 34235.0,
+      "annual_rainfall_mm": 2252.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|uttar pradesh": {
+      "area_ha": 5898690.0,
+      "annual_rainfall_mm": 814.5,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|uttarakhand": {
+      "area_ha": 15315.0,
+      "annual_rainfall_mm": 1313.948,
+      "fertilizer_per_ha": 193.61,
+      "pesticide_per_ha": 0.37
+    },
+    "rice|west bengal": {
+      "area_ha": 4004077.0,
+      "annual_rainfall_mm": 1733.4,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean|andhra pradesh": {
+      "area_ha": 24.0,
+      "annual_rainfall_mm": 899.2,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean|arunachal pradesh": {
+      "area_ha": 3137.0,
+      "annual_rainfall_mm": 2433.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean|bihar": {
+      "area_ha": 19600.0,
+      "annual_rainfall_mm": 1194.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean|chhattisgarh": {
+      "area_ha": 75112.0,
+      "annual_rainfall_mm": 1420.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean|gujarat": {
+      "area_ha": 100624.0,
+      "annual_rainfall_mm": 1067.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean|himachal pradesh": {
+      "area_ha": 556.0,
+      "annual_rainfall_mm": 1217.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean|jharkhand": {
+      "area_ha": 1193.0,
+      "annual_rainfall_mm": 1137.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean|karnataka": {
+      "area_ha": 336850.0,
+      "annual_rainfall_mm": 1422.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean|kerala": {
+      "area_ha": 1.0,
+      "annual_rainfall_mm": 2602.9,
+      "fertilizer_per_ha": 157.91,
+      "pesticide_per_ha": 0.33
+    },
+    "soybean|madhya pradesh": {
+      "area_ha": 6194044.0,
+      "annual_rainfall_mm": 1446.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean|maharashtra": {
+      "area_ha": 4123911.0,
+      "annual_rainfall_mm": 1555.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean|manipur": {
+      "area_ha": 4904.0,
+      "annual_rainfall_mm": 1196.9,
+      "fertilizer_per_ha": 162.2,
+      "pesticide_per_ha": 0.35
+    },
+    "soybean|meghalaya": {
+      "area_ha": 1873.0,
+      "annual_rainfall_mm": 3844.4,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean|mizoram": {
+      "area_ha": 1121.0,
+      "annual_rainfall_mm": 2178.5,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean|nagaland": {
+      "area_ha": 25170.0,
+      "annual_rainfall_mm": 1593.0,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean|sikkim": {
+      "area_ha": 2929.0,
+      "annual_rainfall_mm": 2740.0,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean|telangana": {
+      "area_ha": 172092.0,
+      "annual_rainfall_mm": 1031.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean|tripura": {
+      "area_ha": 179.0,
+      "annual_rainfall_mm": 2252.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean|uttar pradesh": {
+      "area_ha": 22402.0,
+      "annual_rainfall_mm": 814.5,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean|uttarakhand": {
+      "area_ha": 7246.0,
+      "annual_rainfall_mm": 1313.948,
+      "fertilizer_per_ha": 193.61,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean|west bengal": {
+      "area_ha": 249.0,
+      "annual_rainfall_mm": 1733.4,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|andhra pradesh": {
+      "area_ha": 85911.0,
+      "annual_rainfall_mm": 899.2,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|arunachal pradesh": {
+      "area_ha": 2146.0,
+      "annual_rainfall_mm": 2433.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|assam": {
+      "area_ha": 29703.0,
+      "annual_rainfall_mm": 2084.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|bihar": {
+      "area_ha": 223892.0,
+      "annual_rainfall_mm": 1194.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|chhattisgarh": {
+      "area_ha": 31237.0,
+      "annual_rainfall_mm": 1420.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|delhi": {
+      "area_ha": 3.0,
+      "annual_rainfall_mm": 706.8,
+      "fertilizer_per_ha": 144.49,
+      "pesticide_per_ha": 0.27
+    },
+    "sugarcane|goa": {
+      "area_ha": 811.0,
+      "annual_rainfall_mm": 4489.5,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|gujarat": {
+      "area_ha": 160940.0,
+      "annual_rainfall_mm": 1067.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|haryana": {
+      "area_ha": 96300.0,
+      "annual_rainfall_mm": 351.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|himachal pradesh": {
+      "area_ha": 1603.0,
+      "annual_rainfall_mm": 1217.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|jharkhand": {
+      "area_ha": 713.0,
+      "annual_rainfall_mm": 1156.6,
+      "fertilizer_per_ha": 150.96,
+      "pesticide_per_ha": 0.33
+    },
+    "sugarcane|karnataka": {
+      "area_ha": 428540.0,
+      "annual_rainfall_mm": 1422.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|kerala": {
+      "area_ha": 950.04,
+      "annual_rainfall_mm": 3119.2,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|madhya pradesh": {
+      "area_ha": 124681.0,
+      "annual_rainfall_mm": 1446.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|maharashtra": {
+      "area_ha": 822407.0,
+      "annual_rainfall_mm": 1555.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|manipur": {
+      "area_ha": 5450.0,
+      "annual_rainfall_mm": 1196.9,
+      "fertilizer_per_ha": 162.2,
+      "pesticide_per_ha": 0.35
+    },
+    "sugarcane|mizoram": {
+      "area_ha": 1468.0,
+      "annual_rainfall_mm": 2178.5,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|nagaland": {
+      "area_ha": 4450.0,
+      "annual_rainfall_mm": 1593.0,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|odisha": {
+      "area_ha": 8948.0,
+      "annual_rainfall_mm": 1593.9,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|puducherry": {
+      "area_ha": 1308.0,
+      "annual_rainfall_mm": 1317.0,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|punjab": {
+      "area_ha": 91000.0,
+      "annual_rainfall_mm": 653.2,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|tamil nadu": {
+      "area_ha": 131207.0,
+      "annual_rainfall_mm": 910.1,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|telangana": {
+      "area_ha": 26115.0,
+      "annual_rainfall_mm": 1031.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|tripura": {
+      "area_ha": 687.0,
+      "annual_rainfall_mm": 2252.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|uttar pradesh": {
+      "area_ha": 2208347.0,
+      "annual_rainfall_mm": 814.5,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|uttarakhand": {
+      "area_ha": 90184.0,
+      "annual_rainfall_mm": 1313.948,
+      "fertilizer_per_ha": 193.61,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane|west bengal": {
+      "area_ha": 19177.0,
+      "annual_rainfall_mm": 1733.4,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|andhra pradesh": {
+      "area_ha": 38.0,
+      "annual_rainfall_mm": 868.2,
+      "fertilizer_per_ha": 157.44,
+      "pesticide_per_ha": 0.38
+    },
+    "wheat|arunachal pradesh": {
+      "area_ha": 3930.0,
+      "annual_rainfall_mm": 2433.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|assam": {
+      "area_ha": 11336.0,
+      "annual_rainfall_mm": 2084.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|bihar": {
+      "area_ha": 2150180.0,
+      "annual_rainfall_mm": 1194.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|chhattisgarh": {
+      "area_ha": 116274.0,
+      "annual_rainfall_mm": 1420.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|delhi": {
+      "area_ha": 19228.0,
+      "annual_rainfall_mm": 546.9,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|gujarat": {
+      "area_ha": 1393487.0,
+      "annual_rainfall_mm": 1067.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|haryana": {
+      "area_ha": 2533800.0,
+      "annual_rainfall_mm": 351.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|himachal pradesh": {
+      "area_ha": 319098.0,
+      "annual_rainfall_mm": 1217.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|jammu and kashmir": {
+      "area_ha": 243929.0,
+      "annual_rainfall_mm": 1324.1,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|jharkhand": {
+      "area_ha": 214780.0,
+      "annual_rainfall_mm": 1137.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|karnataka": {
+      "area_ha": 158319.0,
+      "annual_rainfall_mm": 1422.3,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|kerala": {
+      "area_ha": 1.0,
+      "annual_rainfall_mm": 3119.2,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|madhya pradesh": {
+      "area_ha": 10216517.0,
+      "annual_rainfall_mm": 1446.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|maharashtra": {
+      "area_ha": 1056965.0,
+      "annual_rainfall_mm": 1555.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|manipur": {
+      "area_ha": 2290.0,
+      "annual_rainfall_mm": 1196.9,
+      "fertilizer_per_ha": 162.2,
+      "pesticide_per_ha": 0.35
+    },
+    "wheat|meghalaya": {
+      "area_ha": 464.0,
+      "annual_rainfall_mm": 3844.4,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|mizoram": {
+      "area_ha": 3.0,
+      "annual_rainfall_mm": 2640.8,
+      "fertilizer_per_ha": 108.34,
+      "pesticide_per_ha": 0.21
+    },
+    "wheat|nagaland": {
+      "area_ha": 3430.0,
+      "annual_rainfall_mm": 1593.0,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|odisha": {
+      "area_ha": 118.0,
+      "annual_rainfall_mm": 1593.9,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|punjab": {
+      "area_ha": 3521000.0,
+      "annual_rainfall_mm": 653.2,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|sikkim": {
+      "area_ha": 165.0,
+      "annual_rainfall_mm": 2740.0,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|telangana": {
+      "area_ha": 4471.0,
+      "annual_rainfall_mm": 1031.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|tripura": {
+      "area_ha": 148.0,
+      "annual_rainfall_mm": 2252.8,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|uttar pradesh": {
+      "area_ha": 9852504.0,
+      "annual_rainfall_mm": 814.5,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|uttarakhand": {
+      "area_ha": 297189.0,
+      "annual_rainfall_mm": 1313.948,
+      "fertilizer_per_ha": 193.61,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat|west bengal": {
+      "area_ha": 188308.0,
+      "annual_rainfall_mm": 1733.4,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    }
+  },
+  "regional_feature_defaults_by_crop": {
+    "cotton": {
+      "area_ha": 650305.0,
+      "annual_rainfall_mm": 1446.7,
+      "fertilizer_per_ha": 171.76,
+      "pesticide_per_ha": 0.37
+    },
+    "groundnut": {
+      "area_ha": 617.0,
+      "annual_rainfall_mm": 1313.948,
+      "fertilizer_per_ha": 193.61,
+      "pesticide_per_ha": 0.37
+    },
+    "maize": {
+      "area_ha": 19697.0,
+      "annual_rainfall_mm": 1313.948,
+      "fertilizer_per_ha": 193.61,
+      "pesticide_per_ha": 0.37
+    },
+    "potato": {
+      "area_ha": 6020.0,
+      "annual_rainfall_mm": 1313.948,
+      "fertilizer_per_ha": 193.61,
+      "pesticide_per_ha": 0.37
+    },
+    "rice": {
+      "area_ha": 15315.0,
+      "annual_rainfall_mm": 1313.948,
+      "fertilizer_per_ha": 193.61,
+      "pesticide_per_ha": 0.37
+    },
+    "soybean": {
+      "area_ha": 7246.0,
+      "annual_rainfall_mm": 1313.948,
+      "fertilizer_per_ha": 193.61,
+      "pesticide_per_ha": 0.37
+    },
+    "sugarcane": {
+      "area_ha": 90184.0,
+      "annual_rainfall_mm": 1313.948,
+      "fertilizer_per_ha": 193.61,
+      "pesticide_per_ha": 0.37
+    },
+    "wheat": {
+      "area_ha": 297189.0,
+      "annual_rainfall_mm": 1313.948,
+      "fertilizer_per_ha": 193.61,
+      "pesticide_per_ha": 0.37
+    }
+  },
   "per_crop_median_yield_t_ha": {
     "cotton": 0.807,
     "groundnut": 1.195,
@@ -86,6 +1386,6 @@
     "numpy": "2.5.3",
     "pandas": "3.0.5"
   },
-  "created_at": "2026-09-10T18:16:57.506569+00:00",
+  "created_at": "2026-09-11T11:26:54.881112+00:00",
   "disclaimer": "Trained on state-year AGGREGATE data (no plot-level soil chemistry). The service applies a separate agronomic adjustment for soil / temperature inputs. Show every prediction with a 'verify with a local agricultural expert / soil test' note."
 }

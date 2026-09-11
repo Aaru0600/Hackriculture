@@ -70,6 +70,30 @@ def test_bad_ph_lowers_the_estimate():
     assert bad < good
 
 
+def test_regional_defaults_not_the_farmers_own_plot_size():
+    """
+    Regression: `area_ha` (and the other real-data numeric features) are
+    STATE-YEAR AGGREGATES the model was trained on (millions of hectares for
+    a big wheat state), not an individual farm. A farmer's own `farm_size_ha`
+    (a few hectares) must never be substituted in for the missing `area_ha` -
+    that fed the model a wildly out-of-distribution value and silently
+    collapsed the prediction toward the smallest-area training rows,
+    systematically under-predicting major/high-input states by 30-55%.
+    """
+    tiny_farm = predict_yield(dict(crop="wheat", state="punjab", season="rabi", farm_size_ha=2))
+    # Punjab wheat is a large, intensively-farmed rabi crop - recent state
+    # averages run ~4.5-5 t/ha. The old bug produced ~2.75 t/ha here.
+    assert tiny_farm["core_yield_t_ha"] > 4.0, (
+        "core yield collapsed - farm_size_ha is likely leaking into the "
+        "area_ha model feature again"
+    )
+
+    big_farm = predict_yield(dict(crop="wheat", state="punjab", season="rabi", farm_size_ha=500))
+    # Farm size must only scale `expected_production_t`, never the per-hectare
+    # yield itself - the regional model has no notion of one caller's plot.
+    assert tiny_farm["core_yield_t_ha"] == pytest.approx(big_farm["core_yield_t_ha"], rel=1e-6)
+
+
 def test_adjustment_clamped():
     adj = agronomic_adjustment(crop="rice", nitrogen=0, phosphorus=0, potassium=0,
                                ph=4.0, temperature=45, humidity=100,
