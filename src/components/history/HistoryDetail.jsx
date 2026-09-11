@@ -21,42 +21,55 @@ function Line({ label, value }) {
   )
 }
 
+const qualityBucket = (score) => (score >= 75 ? 'high' : score >= 55 ? 'medium' : 'low')
+
 /** Renders a human-readable summary of one history row's output - never raw JSON. */
 export function HistoryDetail({ isPred, kind, row }) {
   const { t } = useTranslation()
   const o = row.output ?? row
 
   if (isPred) {
-    const qualityLabel = o.predictionQualityLabel || 'medium'
+    // Predictions are the one kind whose `output` is the ML service's raw
+    // snake_case response (`predicted_yield_t_ha`, ...) - the camelCase shape
+    // lives only in the ephemeral API response, never persisted. Recommendation
+    // kinds below don't need this: their ML output is already camelCase.
+    const predictedYield = o.predicted_yield_t_ha ?? row.predictedYield
+    const yieldRange = o.yield_range_t_ha
+    const expectedProduction = o.expected_production_t
+    const predictionQuality = o.prediction_quality ?? row.predictionQuality ?? 0
+    const qualityLabel = row.predictionQualityLabel || qualityBucket(predictionQuality)
+    const riskLevel = o.risk_level ?? row.riskLevel
+    const importantFactors = o.influencing_factors
+
     return (
       <div className="flex flex-col divide-y divide-line px-4 py-2">
-        <Line label={t('predict.result.predictedYield')} value={`${num(o.predictedYield)} ${t('predict.result.tonsPerHa')}`} />
-        {o.yieldRange && (
-          <Line label={t('history.detail.range')} value={t('predict.result.range', { low: num(o.yieldRange[0]), high: num(o.yieldRange[1]) })} />
+        <Line label={t('predict.result.predictedYield')} value={`${num(predictedYield)} ${t('predict.result.tonsPerHa')}`} />
+        {yieldRange && (
+          <Line label={t('history.detail.range')} value={t('predict.result.range', { low: num(yieldRange[0]), high: num(yieldRange[1]) })} />
         )}
-        {o.expectedProduction != null && (
-          <Line label={t('history.detail.production')} value={t('predict.result.expectedProduction', { value: num(o.expectedProduction, 1) })} />
+        {expectedProduction != null && (
+          <Line label={t('history.detail.production')} value={t('predict.result.expectedProduction', { value: num(expectedProduction, 1) })} />
         )}
         <div className="flex items-center justify-between gap-3 py-1.5 text-sm">
           <span className="text-muted">{t('predict.result.modelScore')}</span>
           <div className="flex items-center gap-2">
             <Badge variant={QUALITY_VARIANT[qualityLabel] || 'neutral'}>
-              {t(`predict.result.quality.${qualityLabel}`)} · {Math.round(o.predictionQuality ?? 0)}
+              {t(`predict.result.quality.${qualityLabel}`)} · {Math.round(predictionQuality)}
             </Badge>
-            {o.riskLevel && (
-              <Badge variant={RISK_VARIANT[o.riskLevel] || 'neutral'} iconLeft={<AlertTriangle size={12} />}>
-                {t(`predict.result.riskLevels.${o.riskLevel}`, o.riskLevel)}
+            {riskLevel && (
+              <Badge variant={RISK_VARIANT[riskLevel] || 'neutral'} iconLeft={<AlertTriangle size={12} />}>
+                {t(`predict.result.riskLevels.${riskLevel}`, riskLevel)}
               </Badge>
             )}
           </div>
         </div>
-        {Array.isArray(o.importantFactors) && o.importantFactors.length > 0 && (
+        {Array.isArray(importantFactors) && importantFactors.length > 0 && (
           <div className="py-2">
             <span className="mb-1 flex items-center gap-1.5 text-xs font-semibold text-muted">
               <TrendingUp size={13} /> {t('predict.result.whyTitle')}
             </span>
             <ul className="flex flex-col gap-1">
-              {o.importantFactors.slice(0, 5).map((f, i) => (
+              {importantFactors.slice(0, 5).map((f, i) => (
                 <li key={i} className="flex items-center justify-between text-xs">
                   <span className="text-ink/80">{f.label}</span>
                   <span className={cn('font-semibold', (f.impact_t_ha ?? 0) >= 0 ? 'text-success' : 'text-danger')}>
@@ -67,7 +80,7 @@ export function HistoryDetail({ isPred, kind, row }) {
             </ul>
           </div>
         )}
-        {o.disclaimer && <p className="pt-2 text-[11px] leading-relaxed text-muted">{o.disclaimer}</p>}
+        <p className="pt-2 text-[11px] leading-relaxed text-muted">{o.prediction_quality_note}</p>
       </div>
     )
   }
