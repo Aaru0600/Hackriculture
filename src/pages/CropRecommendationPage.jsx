@@ -44,7 +44,7 @@ export default function CropRecommendationPage() {
         if (patch[k] != null) { nv[k] = String(patch[k]); n++ }
       }
       if (patch.soilType) nv.soilType = patch.soilType
-      if (patch.recentRainfall != null && !nv.rainfall) nv.rainfall = String(Math.min(320, patch.recentRainfall))
+      if (patch.rainfall != null) { nv.rainfall = String(Math.min(320, patch.rainfall)); n++ }
       setAutofilled(n)
       return nv
     })
@@ -132,9 +132,6 @@ export default function CropRecommendationPage() {
             </Card>
           )}
 
-          <p className="rounded-xl bg-warning-soft px-4 py-3 text-xs leading-relaxed text-warning">
-            {result.disclaimer || t('cropRec.disclaimer')}
-          </p>
           <Button variant="outline" size="sm" onClick={reset} className="w-fit">
             <RotateCcw size={15} /> {t('cropRec.tryAnother')}
           </Button>

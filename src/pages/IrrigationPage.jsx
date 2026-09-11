@@ -162,9 +162,6 @@ export default function IrrigationPage() {
             </Card>
           )}
 
-          <p className="rounded-xl bg-warning-soft px-4 py-3 text-xs leading-relaxed text-warning">
-            {result.disclaimer || t('irrigation.disclaimer')}
-          </p>
           <Button variant="outline" size="sm" onClick={reset} className="w-fit">
             <RotateCcw size={15} /> {t('irrigation.tryAnother')}
           </Button>

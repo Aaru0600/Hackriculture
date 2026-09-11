@@ -65,7 +65,7 @@ export default function RegisterPage() {
     const schema = {
       name: [required],
       identifier: [emailOrPhone],
-      password: [required, minLength(6)],
+      password: [required, minLength(8)],
       confirmPassword: [required, matches(form.values.password)],
       state: [required],
       farmSize: [numberInRange(0.01, 100000)],
